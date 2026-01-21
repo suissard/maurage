@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alice Maurage | Art-Thérapeute Guérande</title>
+    <meta name="description" content="Art-thérapie clinique à domicile et en institution sur Guérande.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Config Couleurs -->
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Helvetica', 'Arial', 'sans-serif'],
+                    serif: ['Georgia', 'serif'],
+                },
+                extend: {
+                    colors: {
+                        teal: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59' },
+                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 600: '#57534e', 800: '#292524', 900: '#1c1917' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animation d'apparition simple */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animation Dessin SVG */
+        .draw-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2s ease-out forwards;
+        }
+        
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Blob Animation d'ambiance */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+    </style>
+</head>
+<body class="font-sans text-stone-700 bg-stone-50 overflow-x-hidden selection:bg-teal-200">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="p-2 rounded-full bg-teal-600 text-white">
+                        <!-- Icon Palette -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                    </div>
+                    <span class="text-xl font-serif font-bold text-stone-800">Alice Maurage</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#pourqui" class="text-stone-600 hover:text-teal-600 font-medium">Pour qui</a>
+                    <a href="#expertise" class="text-stone-600 hover:text-teal-600 font-medium">Expertise</a>
+                    <a href="#lieux" class="text-stone-600 hover:text-teal-600 font-medium">Lieux</a>
+                    <a href="#contact" class="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition shadow-md hover:-translate-y-0.5">
+                        Prendre RDV
+                    </a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="mobile-btn" class="md:hidden text-stone-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 absolute w-full left-0 top-full px-4 py-4 shadow-lg flex-col gap-4">
+            <a href="#pourqui" class="block text-lg font-medium text-stone-600">Pour qui</a>
+            <a href="#expertise" class="block text-lg font-medium text-stone-600">Expertise</a>
+            <a href="#lieux" class="block text-lg font-medium text-stone-600">Lieux</a>
+            <a href="#contact" class="block text-lg font-bold text-teal-600">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-stone-100 -z-10"></div>
+        <!-- Blob deco -->
+        <div class="absolute top-10 right-0 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-10 left-0 w-64 h-64 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style="animation-delay: 2s"></div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <!-- SVG Title -->
+            <div class="mb-6 h-32 md:h-40 flex items-center justify-center">
+                <svg width="100%" height="100%" viewBox="0 0 600 120" preserveAspectRatio="xMidYMid meet" class="overflow-visible">
+                    <text x="50%" y="40" text-anchor="middle" font-family="serif" font-weight="bold" font-size="40" fill="#292524">Art-Thérapeute</text>
+                    <text x="50%" y="90" text-anchor="middle" font-family="serif" font-weight="bold" font-size="48" fill="#0d9488">Clinique</text>
+                    <!-- Vague Soulignement -->
+                    <path d="M 150 100 Q 300 130 450 95" fill="none" stroke="#0d9488" stroke-width="4" stroke-linecap="round" class="draw-path opacity-50" />
+                </svg>
+            </div>
+            
+            <p class="text-lg md:text-2xl text-stone-600 font-light mb-8 max-w-2xl mx-auto reveal">
+                Un soin thérapeutique non médicamenteux pour apaiser l'anxiété et la mémoire.
+                <br>
+                <span class="font-medium text-teal-700 block mt-2">Guérande • La Baule • Cap Atlantique</span>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal">
+                <a href="#contact" class="px-8 py-4 bg-teal-600 text-white rounded-full font-bold hover:bg-teal-700 transition shadow-lg flex items-center justify-center gap-2">
+                    Appel découverte gratuit
+                    <!-- Phone Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+                <div class="flex items-center justify-center gap-2 text-stone-500 text-sm font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Remboursé par certaines mutuelles
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pour Qui -->
+    <section id="pourqui" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-center text-stone-800 mb-12 reveal">À qui s'adresse l'art-thérapie ?</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Seniors -->
+                <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 hover:shadow-md transition reveal">
+                    <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Seniors & Mémoire</h3>
+                    <p class="text-sm text-center text-stone-600">Stimulation cognitive et lien social (Alzheimer, Parkinson). Maintien de l'autonomie.</p>
+                </div>
+
+                <!-- Actifs -->
+                <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 hover:shadow-md transition reveal">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-700 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Actifs & Stress</h3>
+                    <p class="text-sm text-center text-stone-600">Burn-out, charge mentale, transition de vie. Un espace neutre pour déposer ce qui pèse.</p>
+                </div>
+
+                <!-- Ados -->
+                <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 hover:shadow-md transition reveal">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Adolescents</h3>
+                    <p class="text-sm text-center text-stone-600">Anxiété scolaire, confiance en soi. S'exprimer quand la parole est bloquée.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" class="py-16 bg-teal-50">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2 reveal">
+                <h2 class="text-3xl font-serif font-bold text-stone-800 mb-6">Pas un cours de dessin,<br>mais un soin.</h2>
+                <ul class="space-y-4">
+                    <li class="flex gap-4">
+                        <div class="bg-white p-2 h-fit rounded shadow-sm text-teal-600">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Aucun talent requis</h4>
+                            <p class="text-sm text-stone-600">On cherche le "Vrai", pas le "Beau".</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="bg-white p-2 h-fit rounded shadow-sm text-teal-600">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Validé par les neurosciences</h4>
+                            <p class="text-sm text-stone-600">Réduit le cortisol, active le circuit de la récompense.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 reveal">
+                <div class="bg-white p-6 rounded-xl shadow-lg rotate-1 max-w-sm mx-auto">
+                    <p class="italic text-stone-600 mb-4">"Ma mère, atteinte d'Alzheimer, a retrouvé le sourire et des souvenirs grâce aux séances à domicile."</p>
+                    <p class="text-sm font-bold text-stone-800 text-right">- Famille B. (La Baule)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lieux -->
+    <section id="lieux" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-center text-stone-800 mb-10 reveal">Où intervenez-vous ?</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-stone-200 p-6 rounded-xl flex gap-4 items-center reveal hover:bg-stone-50">
+                    <div class="bg-teal-100 p-3 rounded-full text-teal-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">À Domicile</h3>
+                        <p class="text-sm text-stone-500">Guérande, La Baule, Pornichet...</p>
+                        <p class="text-sm text-stone-600 mt-1">Je me déplace avec tout le matériel.</p>
+                    </div>
+                </div>
+                <div class="border border-stone-200 p-6 rounded-xl flex gap-4 items-center reveal hover:bg-stone-50">
+                    <div class="bg-orange-100 p-3 rounded-full text-orange-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="22"/><line x1="15" y1="22" x2="15" y2="22"/><line x1="12" y1="22" x2="12" y2="22"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">En Institution</h3>
+                        <p class="text-sm text-stone-500">EHPAD, SESSAD, Entreprises</p>
+                        <p class="text-sm text-stone-600 mt-1">Ateliers de groupe et QVT.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-teal-800 text-white text-center relative overflow-hidden">
+        <div class="relative z-10 max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold mb-4">Faisons connaissance</h2>
+            <p class="text-teal-100 mb-10">Premier échange gratuit pour évaluer vos besoins.</p>
+            
+            <div class="bg-white rounded-2xl p-8 text-stone-700 shadow-2xl flex flex-col md:flex-row gap-6 justify-center">
+                
+                <a href="tel:0600000000" class="flex-1 bg-stone-100 p-6 rounded-xl hover:bg-stone-200 transition group">
+                    <div class="text-teal-600 mb-2 flex justify-center group-hover:scale-110 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="font-bold text-lg">Appeler</div>
+                    <div class="text-sm text-stone-500">06 00 00 00 00</div>
+                </a>
+
+                <a href="mailto:contact@alice-maurage.fr" class="flex-1 bg-teal-600 text-white p-6 rounded-xl hover:bg-teal-700 transition group">
+                    <div class="text-white mb-2 flex justify-center group-hover:scale-110 transition">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="font-bold text-lg">Envoyer un Email</div>
+                    <div class="text-sm text-teal-100">Réponse sous 24h</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-500 py-8 text-center text-sm">
+        <p>&copy; 2024 Alice Maurage - Guérande.</p>
+    </footer>
+
+    <!-- Script Simple -->
+    <script>
+        // Menu Mobile
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+
+        // Animation au scroll (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+
+
