@@ -36,20 +36,89 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Animation FAQ */
+        /* FAQ Static Styles */
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            /* Always visible */
+            display: block;
         }
-        .faq-item.active .faq-answer {
-            max-height: 200px; /* Valeur arbitraire suffisante */
+
+
+        /* Text Staggered Animation */
+        .animated-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-bottom: 40px; /* Increased space for underline */
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .faq-icon {
-            transition: transform 0.3s ease;
+        
+        /* Simple Fade In for Text */
+        .animated-text-main, .animated-text-accent {
+            opacity: 0;
+            transform: translateY(10px);
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            line-height: 1.2;
+            display: block;
         }
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
+
+        .animated-text-main {
+            color: #2c2926; /* stone-800 */
+            font-size: 3rem; /* Fallback */
+            margin-bottom: 0.2rem;
+        }
+
+        .animated-text-accent {
+            color: #0d9488; /* teal-600 */
+            font-size: 3.5rem; /* Fallback */
+        }
+
+        .active .animated-text-main, 
+        .active .animated-text-accent {
+            animation: textFadeIn 1s ease-out forwards;
+        }
+        
+        /* Slight delay for the second line if it exists */
+        .active .animated-text-accent {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes textFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Soulignement Vague */
+        .brush-stroke {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            opacity: 0;
+            fill: transparent;
+            /* Delay brush stroke until text finishes (approx 1s) */
+            transition: opacity 0.5s ease 1s; 
+            vector-effect: non-scaling-stroke;
+            position: absolute;
+            bottom: -10px; /* Moved down to avoid overlapping text */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            /* max-width removed to allow fitting to text */
+            height: auto;
+            pointer-events: none;
+        }
+        .active .brush-stroke {
+            animation: drawBrush 1.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1s forwards;
+            opacity: 0.5;
+        }
+
+        @keyframes drawBrush {
+            to { stroke-dashoffset: 0; }
         }
     </style>
 </head>
@@ -90,17 +159,16 @@
     <header class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-stone-100 -z-10"></div>
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <div class="mb-6 h-32 md:h-40 flex items-center justify-center">
-                <svg width="100%" height="100%" viewBox="0 0 600 120" preserveAspectRatio="xMidYMid meet" class="overflow-visible">
-                    <text x="50%" y="40" text-anchor="middle" font-family="serif" font-weight="bold" font-size="40" fill="#292524">Art-Thérapeute</text>
-                    <text x="50%" y="90" text-anchor="middle" font-family="serif" font-weight="bold" font-size="48" fill="#0d9488">Clinique</text>
-                    <path d="M 150 100 Q 300 130 450 95" fill="none" stroke="#0d9488" stroke-width="4" stroke-linecap="round" opacity="0.5" />
-                </svg>
+            <!-- Drawn Title Container -->
+            <div id="hero-title-container" class="mb-6 h-32 md:h-48 flex items-center justify-center relative">
+                <!-- SVG injected via JS -->
             </div>
+            
             <p class="text-lg md:text-2xl text-stone-600 font-light mb-8 max-w-2xl mx-auto reveal">
-                Un soin thérapeutique non médicamenteux pour apaiser l'anxiété et la mémoire.
+                Un soin thérapeutique non médicamenteux pour apaiser l'anxiété et réveiller la mémoire.
                 <br>
-                <span class="font-medium text-teal-700 block mt-2">Guérande • La Baule • Cap Atlantique</span>
+                <span class="font-medium text-teal-700 block mt-2">Guérande • La Baule • Cap Atlantique • Saint Nazaire</span>
+                
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 reveal">
                 <a href="#contact" class="px-8 py-4 bg-teal-600 text-white rounded-full font-bold hover:bg-teal-700 transition shadow-lg flex items-center justify-center gap-2">
@@ -124,7 +192,8 @@
                 </div>
             </div>
             <div class="md:w-1/2 reveal">
-                <h2 class="text-3xl font-serif font-bold text-stone-800 mb-4">Plus qu'une passion, <br>une expertise.</h2>
+                <!-- Title Container -->
+                <div id="title-apropos" class="mb-4"></div>
                 <p class="text-stone-600 mb-4 leading-relaxed">
                     Je suis <strong>Alice Maurage</strong>, art-thérapeute certifiée. Mon approche est strictement <strong>clinique</strong> : elle ne vise pas l'apprentissage artistique, mais le soin psychique et émotionnel.
                 </p>
@@ -142,8 +211,10 @@
     <!-- SECTION 2: Pour Qui (Personas) -->
     <section id="pourqui" class="py-16 bg-stone-50">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-serif font-bold text-center text-stone-800 mb-12 reveal">Une réponse adaptée à vos besoins</h2>
+            <!-- Title Container -->
+            <div id="title-pourqui" class="mb-12"></div>
             <div class="grid md:grid-cols-3 gap-8">
+                <!-- Seniors -->
                 <!-- Seniors -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
                     <div class="text-teal-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
@@ -151,11 +222,13 @@
                     <p class="text-sm text-center text-stone-600">Stimuler la mémoire et l'autonomie. Un moment de répit apaisant face à Alzheimer ou Parkinson.</p>
                 </div>
                 <!-- Actifs -->
+                <!-- Actifs -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
                     <div class="text-orange-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
                     <h3 class="text-xl font-bold text-center mb-2">Actifs (Stress/Burn-out)</h3>
                     <p class="text-sm text-center text-stone-600">Déposer la charge mentale. Un espace neutre pour prévenir ou soigner l'épuisement professionnel.</p>
                 </div>
+                <!-- Ados -->
                 <!-- Ados -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
                     <div class="text-indigo-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
@@ -169,7 +242,8 @@
     <!-- SECTION 3: Déroulement (Nouveau!) -->
     <section id="deroulement" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-serif font-bold text-center text-stone-800 mb-10 reveal">Comment se déroule une séance ?</h2>
+            <!-- Title Container -->
+            <div id="title-deroulement" class="mb-10"></div>
             <div class="space-y-8">
                 <!-- Etape 1 -->
                 <div class="flex gap-6 items-start reveal">
@@ -202,14 +276,14 @@
     <!-- SECTION 4: FAQ (Pour lever les freins) -->
     <section class="py-16 bg-teal-50">
         <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-serif font-bold text-center text-stone-800 mb-10 reveal">Questions fréquentes</h2>
+            <!-- Title Container -->
+            <div id="title-faq" class="mb-10"></div>
             
             <div class="space-y-4">
                 <!-- Question 1 -->
-                <div class="bg-white rounded-xl shadow-sm p-4 cursor-pointer faq-item reveal" onclick="toggleFaq(this)">
+                <div class="bg-white rounded-xl shadow-sm p-4 faq-item reveal">
                     <div class="flex justify-between items-center font-bold text-stone-800">
                         Dois-je savoir dessiner ?
-                        <svg class="faq-icon w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
                     <div class="faq-answer text-stone-600 text-sm mt-2">
                         <div class="pt-2">Absolument pas. L'art-thérapie ne vise pas à produire une œuvre d'art, mais à utiliser la matière pour s'exprimer. C'est même souvent plus efficace quand on "lâche prise" sur le résultat esthétique.</div>
@@ -217,10 +291,9 @@
                 </div>
                 
                 <!-- Question 2 -->
-                <div class="bg-white rounded-xl shadow-sm p-4 cursor-pointer faq-item reveal" onclick="toggleFaq(this)">
+                <div class="bg-white rounded-xl shadow-sm p-4 faq-item reveal">
                     <div class="flex justify-between items-center font-bold text-stone-800">
                         Est-ce remboursé ?
-                        <svg class="faq-icon w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
                     <div class="faq-answer text-stone-600 text-sm mt-2">
                         <div class="pt-2">La Sécurité Sociale ne rembourse pas encore l'art-thérapie. Cependant, de plus en plus de mutuelles proposent des forfaits "Médecines douces" ou "Psychologie" qui peuvent couvrir une partie des séances. Une facture vous sera remise.</div>
@@ -228,10 +301,9 @@
                 </div>
 
                 <!-- Question 3 -->
-                <div class="bg-white rounded-xl shadow-sm p-4 cursor-pointer faq-item reveal" onclick="toggleFaq(this)">
+                <div class="bg-white rounded-xl shadow-sm p-4 faq-item reveal">
                     <div class="flex justify-between items-center font-bold text-stone-800">
                         Combien de temps dure une séance ?
-                        <svg class="faq-icon w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
                     <div class="faq-answer text-stone-600 text-sm mt-2">
                         <div class="pt-2">Une séance individuelle dure généralement entre 45 minutes et 1 heure. Pour les ateliers de groupe en institution, cela varie de 1h à 1h30.</div>
@@ -244,23 +316,24 @@
     <!-- Contact -->
     <section id="contact" class="py-20 bg-teal-800 text-white text-center relative overflow-hidden">
         <div class="relative z-10 max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-serif font-bold mb-4">Parlons de votre projet</h2>
+            <!-- Title Container -->
+            <div id="title-contact" class="mb-4"></div>
             <p class="text-teal-100 mb-10">L'appel découverte est gratuit et sans engagement. Il permet simplement de voir si je peux vous aider.</p>
             
             <div class="bg-white rounded-2xl p-8 text-stone-700 shadow-2xl flex flex-col md:flex-row gap-6 justify-center">
-                <a href="tel:0600000000" class="flex-1 bg-stone-100 p-6 rounded-xl hover:bg-stone-200 transition group border border-stone-200">
+                <a href="tel:06 77 15 69 10" class="flex-1 bg-stone-100 p-6 rounded-xl hover:bg-stone-200 transition group border border-stone-200">
                     <div class="text-teal-600 mb-2 flex justify-center group-hover:scale-110 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div class="font-bold text-lg">M'appeler</div>
-                    <div class="text-sm text-stone-500">06 00 00 00 00</div>
+                    <div class="text-sm text-stone-500">06 77 15 69 10</div>
                 </a>
-                <a href="mailto:contact@alice-maurage.fr" class="flex-1 bg-teal-600 text-white p-6 rounded-xl hover:bg-teal-700 transition group">
+                <a href="mailto:alice@maurage.fr" class="flex-1 bg-teal-600 text-white p-6 rounded-xl hover:bg-teal-700 transition group">
                     <div class="text-white mb-2 flex justify-center group-hover:scale-110 transition">
                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </div>
                     <div class="font-bold text-lg">M'envoyer un mail</div>
-                    <div class="text-sm text-teal-100">Réponse sous 24h</div>
+                    <div href="mailto:alice@maurage.fr" class="text-sm text-teal-100">alice@maurage.fr</div>
                 </a>
             </div>
         </div>
@@ -268,20 +341,10 @@
 
     <!-- Footer -->
     <footer class="bg-stone-900 text-stone-500 py-8 text-center text-sm">
-        <p>&copy; 2024 Alice Maurage - Guérande • <a href="#" class="hover:text-stone-300">Mentions Légales</a></p>
+        <p>&copy; 2026 Alice Maurage - Guérande • <a href="#" class="hover:text-stone-300">Mentions Légales</a></p>
     </footer>
 
     <script>
-        // Toggle FAQ
-        function toggleFaq(element) {
-            const wasActive = element.classList.contains('active');
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-            // Open clicked if wasn't active
-            if (!wasActive) {
-                element.classList.add('active');
-            }
-        }
 
         // Mobile Menu
         const btn = document.getElementById('mobile-btn');
@@ -310,6 +373,124 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // AnimatedTitle Logic (Staggered Letters)
+        class AnimatedTitle {
+            constructor(containerId, line1, line2 = "", options = {}) {
+                this.container = document.getElementById(containerId);
+                if (!this.container) return;
+
+                this.line1 = line1;
+                this.line2 = line2;
+                this.options = options;
+                
+                this.render();
+                this.initObserver();
+            }
+
+            render() {
+                this.container.innerHTML = '';
+                this.container.classList.add('animated-text-container'); // For structural CSS
+                
+                // Append Line 1
+                const div1 = document.createElement('div');
+                div1.className = 'animated-text-main text-center';
+                if(this.options.fontSizeMain) div1.style.fontSize = this.options.fontSizeMain + 'px';
+                div1.innerHTML = this.line1; // Allow HTML if needed, or textContent
+                this.container.appendChild(div1);
+
+                // Append Line 2 if exists
+                if (this.line2) {
+                    const div2 = document.createElement('div');
+                    div2.className = 'animated-text-accent text-center';
+                     if(this.options.fontSizeAccent) div2.style.fontSize = this.options.fontSizeAccent + 'px';
+                    div2.innerHTML = this.line2;
+                    this.container.appendChild(div2);
+                }
+
+                // Append SVG Brush Stroke
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.setAttribute('viewBox', "0 0 800 100"); // Much flatter viewbox
+                svg.classList.add('brush-stroke');
+                
+                // Generate random wave path
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute('d', this.generateWavePath());
+                path.setAttribute('fill', 'none');
+                path.setAttribute('stroke', '#0d9488');
+                path.setAttribute('stroke-width', '8');
+                path.setAttribute('stroke-linecap', 'round');
+                
+                svg.appendChild(path);
+                this.container.appendChild(svg);
+            }
+
+            generateWavePath() {
+                 // Randomize start, middle, and end points slightly
+                 const startX = 40 + Math.random() * 20;
+                 const startY = 50 + (Math.random() * 10 - 5);
+                 
+                 const midX = 380 + (Math.random() * 40 - 20);
+                 const midY = 50 + (Math.random() * 10 - 5);
+                 
+                 const endX = 740 + (Math.random() * 20 - 10);
+                 const endY = 50 + (Math.random() * 10 - 5);
+                 
+                 // Control point for the first curve (Q) - determines the "arch" height
+                 // Random height between 0 and 30 (y-coordinate)
+                 const cp1x = (startX + midX) / 2 + (Math.random() * 40 - 20);
+                 const cp1y = 10 + Math.random() * 25; 
+                 
+                 // The 'T' command automatically infers the second control point to be smooth
+                 
+                 return `M ${startX} ${startY} Q ${cp1x} ${cp1y}, ${midX} ${midY} T ${endX} ${endY}`;
+            }
+
+            initObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            this.container.classList.add('active'); // CSS matches .active .animated-letter
+                            observer.disconnect(); 
+                        }
+                    });
+                }, { threshold: 0.4 });
+
+                observer.observe(this.container);
+            }
+        }
+
+        // Initialize All Titles
+        document.addEventListener('DOMContentLoaded', () => {
+             // Hero
+            new AnimatedTitle('hero-title-container', 'Art-Thérapeute', 'Clinique', { fontSizeMain: 56, fontSizeAccent: 64 });
+            
+            // Apropos
+            new AnimatedTitle('title-apropos', "Plus qu'une passion,", "une expertise.", { fontSizeMain: 48, fontSizeAccent: 56 });
+
+            // Pour Qui
+            new AnimatedTitle('title-pourqui', "Une réponse adaptée", "à vos besoins", { fontSizeMain: 48, fontSizeAccent: 56 });
+
+            // Deroulement
+            new AnimatedTitle('title-deroulement', "Comment se déroule", "une séance ?", { fontSizeMain: 48, fontSizeAccent: 56 });
+
+            // FAQ
+            new AnimatedTitle('title-faq', "Questions", "fréquentes", { fontSizeMain: 48, fontSizeAccent: 56 });
+
+            // Contact
+            new AnimatedTitle('title-contact', "Parlons de", "votre projet", { fontSizeMain: 48, fontSizeAccent: 56 });
+            
+            // Contact color override
+            const contactContainer = document.getElementById('title-contact');
+            if(contactContainer) {
+                 const style = document.createElement('style');
+                 // Target specific letters in this container
+                 // Target specific letters in this container
+                 style.textContent = `#title-contact .animated-text-main, #title-contact .animated-text-accent { color: #f0fdfa !important; } #title-contact path { stroke: #ccfbf1 !important; opacity: 0.3; }`;
+                 contactContainer.appendChild(style);
+            }
+        });
+
     </script>
 </body>
 </html>

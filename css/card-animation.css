@@ -1,0 +1,354 @@
+/* --- Card Animation Styles --- */
+
+/* Defining variables locally to avoid polluting global scope too much, 
+   adapted for Light Mode & Teal Theme */
+.card-animated {
+    --background-color: #FAFAFA;
+    --text-color: #57534e; /* stone-600 */
+
+    --card-background-color: transparent;
+    --card-border-color: rgba(24, 24, 27, 0.08); /* stone-900 with opacity */
+    --card-box-shadow-1: rgba(24, 24, 27, 0.02);
+    --card-box-shadow-1-y: 3px;
+    --card-box-shadow-1-blur: 6px;
+    --card-box-shadow-2: rgba(24, 24, 27, 0.04);
+    --card-box-shadow-2-y: 2px;
+    --card-box-shadow-2-blur: 7px;
+    --card-label-color: #18181B; /* stone-900 */
+    --card-icon-color: #18181B;
+    --card-icon-background-color: rgba(24, 24, 27, 0.04);
+    --card-icon-border-color: rgba(24, 24, 27, 0.1);
+    
+    /* Green/Teal Adaptation (Teal-500 is roughly #14b8a6) */
+    /* Updating gradient to use Teal colors */
+    --card-shine-opacity: .3;
+    --card-shine-gradient: conic-gradient(from 225deg at 50% 50%, rgba(20, 184, 166, 0) 0deg, #14b8a6 25deg, #f0fdfa 285deg, #FFFFFF 345deg, rgba(20, 184, 166, 0) 360deg);
+    
+    --card-line-color: #E9E9E7;
+    --card-tile-color: rgba(20, 184, 166, 0.08); /* Teal with opacity */
+
+    --card-hover-border-color: rgba(24, 24, 27, 0.15);
+    --card-hover-box-shadow-1: rgba(24, 24, 27, 0.05);
+    --card-hover-box-shadow-1-y: 3px;
+    --card-hover-box-shadow-1-blur: 6px;
+    --card-hover-box-shadow-2: rgba(24, 24, 27, 0.1);
+    --card-hover-box-shadow-2-y: 8px;
+    --card-hover-box-shadow-2-blur: 15px;
+    
+    --card-hover-icon-color: #18181B;
+    --card-hover-icon-background-color: rgba(24, 24, 27, 0.04);
+    --card-hover-icon-border-color: rgba(24, 24, 27, 0.34);
+    
+    --blur-opacity: .1;
+}
+
+.card-animated {
+    background-color: #ffffff; /* Explicit white background for the card itself */
+    box-shadow: 0px var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur) var(--card-box-shadow-1), 0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur) var(--card-box-shadow-2), 0 0 0 1px var(--card-border-color);
+    padding: 32px; /* Adjusted padding */
+    border-radius: 16px; /* rounded-2xl */
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow .25s;
+    overflow: hidden; /* Needed for the absolute positioning of effects */
+    z-index: 1; /* For stacking */
+}
+
+/* Pseudo-element for inner background (if needed) - Keeping it simple */
+.card-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background-color: var(--card-background-color);
+    pointer-events: none;
+}
+
+.card-animated .icon {
+    z-index: 2;
+    position: relative;
+    display: inline-block; /* Changed from table */
+    padding: 8px;
+    margin-bottom: 16px; /* Added spacing */
+}
+
+.card-animated .icon::after {
+    content: '';
+    position: absolute;
+    inset: 4.5px;
+    border-radius: 50%;
+    background-color: var(--card-icon-background-color);
+    border: 1px solid var(--card-icon-border-color);
+    backdrop-filter: blur(2px);
+    transition: background-color .25s, border-color .25s;
+}
+
+.card-animated .icon svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 24px;
+    height: 24px;
+    transform: translateZ(0);
+    color: var(--card-icon-color);
+    transition: color .25s;
+}
+
+/* Typography Overrides to ensure z-index */
+.card-animated h3,
+.card-animated p {
+    z-index: 2;
+    position: relative;
+}
+
+/* Shine Effect */
+.card-animated .shine {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .5s;
+    pointer-events: none;
+}
+
+.card-animated .shine:before {
+    content: '';
+    width: 150%;
+    padding-bottom: 150%;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 55%;
+    filter: blur(35px);
+    opacity: var(--card-shine-opacity);
+    transform: translateX(-50%);
+    background-image: var(--card-shine-gradient);
+}
+
+/* Background Tiles & Lines */
+.card-animated .background {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+    mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-animated .background .tiles {
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+.card-animated .background .tiles .tile {
+    position: absolute;
+    background-color: var(--card-tile-color);
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+}
+
+/* Tile Delays */
+.card-animated .background .tiles .tile.tile-4,
+.card-animated .background .tiles .tile.tile-6,
+.card-animated .background .tiles .tile.tile-10 {
+    animation-delay: -2s;
+}
+
+.card-animated .background .tiles .tile.tile-3,
+.card-animated .background .tiles .tile.tile-5,
+.card-animated .background .tiles .tile.tile-8 {
+    animation-delay: -4s;
+}
+
+.card-animated .background .tiles .tile.tile-2,
+.card-animated .background .tiles .tile.tile-9 {
+    animation-delay: -6s;
+}
+
+/* Tile Positioning */
+.card-animated .background .tiles .tile.tile-1 { top: 0; left: 0; height: 10%; width: 22.5%; }
+.card-animated .background .tiles .tile.tile-2 { top: 0; left: 22.5%; height: 10%; width: 27.5%; }
+.card-animated .background .tiles .tile.tile-3 { top: 0; left: 50%; height: 10%; width: 27.5%; }
+.card-animated .background .tiles .tile.tile-4 { top: 0; left: 77.5%; height: 10%; width: 22.5%; }
+
+.card-animated .background .tiles .tile.tile-5 { top: 10%; left: 0; height: 22.5%; width: 22.5%; }
+.card-animated .background .tiles .tile.tile-6 { top: 10%; left: 22.5%; height: 22.5%; width: 27.5%; }
+.card-animated .background .tiles .tile.tile-7 { top: 10%; left: 50%; height: 22.5%; width: 27.5%; }
+.card-animated .background .tiles .tile.tile-8 { top: 10%; left: 77.5%; height: 22.5%; width: 22.5%; }
+
+.card-animated .background .tiles .tile.tile-9 { top: 32.5%; left: 50%; height: 22.5%; width: 27.5%; }
+.card-animated .background .tiles .tile.tile-10 { top: 32.5%; left: 77.5%; height: 22.5%; width: 22.5%; }
+
+@keyframes tile {
+    0%, 12.5%, 100% { opacity: 1; }
+    25%, 82.5% { opacity: 0; }
+}
+
+.card-animated .background .line {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .35s;
+}
+
+.card-animated .background .line:before,
+.card-animated .background .line:after {
+    content: '';
+    position: absolute;
+    background-color: var(--card-line-color);
+    transition: transform .35s;
+}
+
+.card-animated .background .line:before {
+    left: 0; right: 0; height: 1px;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+}
+
+.card-animated .background .line:after {
+    top: 0; bottom: 0; width: 1px;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+}
+
+.card-animated .background .line.line-1:before { top: 10%; }
+.card-animated .background .line.line-1:after { left: 22.5%; }
+.card-animated .background .line.line-1:before,
+.card-animated .background .line.line-1:after { transition-delay: .3s; }
+
+.card-animated .background .line.line-2:before { top: 32.5%; }
+.card-animated .background .line.line-2:after { left: 50%; }
+.card-animated .background .line.line-2:before,
+.card-animated .background .line.line-2:after { transition-delay: .15s; }
+
+.card-animated .background .line.line-3:before { top: 55%; }
+.card-animated .background .line.line-3:after { right: 22.5%; }
+
+/* Hover States */
+.card-animated:hover {
+    box-shadow: 0px 3px 6px var(--card-hover-box-shadow-1), 0px var(--card-hover-box-shadow-2-y) var(--card-hover-box-shadow-2-blur) var(--card-hover-box-shadow-2), 0 0 0 1px var(--card-hover-border-color);
+}
+
+.card-animated:hover .icon::after {
+    background-color: var(--card-hover-icon-background-color);
+    border-color: var(--card-hover-icon-border-color);
+}
+
+.card-animated:hover .icon svg {
+    color: var(--card-hover-icon-color);
+}
+
+.card-animated:hover .shine {
+    opacity: 1;
+    transition-duration: .5s;
+    transition-delay: 0s;
+}
+
+.card-animated:hover .background .tiles {
+    opacity: 1;
+    transition-delay: .25s;
+}
+
+.card-animated:hover .background .tiles .tile {
+    animation-name: tile;
+}
+
+.card-animated:hover .background .line {
+    opacity: 1;
+    transition-duration: .15s;
+}
+
+.card-animated:hover .background .line:before {
+    transform: scaleX(1);
+}
+
+.card-animated:hover .background .line:after {
+    transform: scaleY(1);
+}
+
+.card-animated:hover .background .line.line-1:before,
+.card-animated:hover .background .line.line-1:after {
+    transition-delay: .0s;
+}
+
+.card-animated:hover .background .line.line-2:before,
+.card-animated:hover .background .line.line-2:after {
+    transition-delay: .15s;
+}
+
+.card-animated:hover .background .line.line-3:before,
+.card-animated:hover .background .line.line-3:after {
+    transition-delay: .3s;
+}
+
+/* --- Scroll Trigger Animations (One-Shot) --- */
+/* Ensure inner elements animate when active */
+
+/* SHINE: Flash opacity */
+.card-animated.active .shine {
+    animation: shine-flash 2.5s ease-out 0.2s forwards;
+}
+
+/* TILES: Fade container in/out AND animate tiles */
+.card-animated.active .background .tiles {
+    animation: tiles-container-fade 4s ease-in-out 0.2s forwards;
+}
+
+/* Important: Trigger the individual tile blinking when active */
+.card-animated.active .background .tiles .tile {
+    animation-name: tile;
+}
+
+/* LINES: Flash lines */
+.card-animated.active .background .line {
+    animation: lines-flash 3s ease-in-out 0.2s forwards;
+    opacity: 1; /* Make sure they are visible during animation */
+}
+
+/* Animate the line scaling */
+.card-animated.active .background .line:before {
+    animation: line-scale-x-flash 3s ease-in-out 0.2s forwards;
+}
+.card-animated.active .background .line:after {
+    animation: line-scale-y-flash 3s ease-in-out 0.2s forwards;
+}
+
+
+@keyframes shine-flash {
+    0% { opacity: 0; }
+    30% { opacity: var(--card-shine-opacity); } /* Go to defined opacity */
+    100% { opacity: 0; }
+}
+
+@keyframes tiles-container-fade {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes lines-flash {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes line-scale-x-flash {
+    0% { transform: scaleX(0); }
+    30% { transform: scaleX(1); }
+    80% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}
+
+@keyframes line-scale-y-flash {
+    0% { transform: scaleY(0); }
+    30% { transform: scaleY(1); }
+    80% { transform: scaleY(1); }
+    100% { transform: scaleY(0); }
+}
