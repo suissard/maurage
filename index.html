@@ -338,12 +338,23 @@
         </div>
     </section>
 
-    <!-- Mentions Légales -->
-    <section id="mentions-legales" class="py-16 bg-stone-50 text-sm text-stone-600">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl font-serif font-bold text-stone-800 mb-8 text-center reveal">Mentions Légales</h2>
 
-            <div class="space-y-6 reveal">
+    <!-- Mentions Légales Modal -->
+    <div id="mentions-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0 duration-300">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col relative transform scale-95 transition-transform duration-300" id="mentions-modal-content">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-stone-100">
+                <h2 class="text-2xl font-serif font-bold text-stone-800">Mentions Légales</h2>
+                <button id="close-mentions-btn" class="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors" aria-label="Fermer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 overflow-y-auto text-sm text-stone-600 space-y-6">
+
                 <div>
                     <h3 class="font-bold text-stone-800 mb-2">Éditeur du site</h3>
                     <p>Le site internet maurage.fr est édité par :</p>
@@ -379,13 +390,15 @@
                     <h3 class="font-bold text-stone-800 mb-2">Avertissement Médical (Clause de non-substitution)</h3>
                     <p>Les prestations proposées par Madame Maurage Alice ne sont pas des actes médicaux. Elles s'inscrivent dans une démarche de bien-être et d'hygiène de vie. Elles ne remplacent en aucun cas une consultation médicale, un diagnostic ou un traitement prescrit par un professionnel de santé (médecin, psychiatre, pédiatre). Madame Maurage Alice ne demande jamais l'arrêt ou la modification d'un traitement médical en cours.</p>
                 </div>
+
             </div>
         </div>
-    </section>
+    </div>
+
 
     <!-- Footer -->
     <footer class="bg-stone-900 text-stone-500 py-8 text-center text-sm">
-        <p>&copy; 2026 Alice Maurage - Guérande • <a href="#mentions-legales" class="hover:text-stone-300">Mentions Légales</a></p>
+        <p>&copy; 2026 Alice Maurage - Guérande • <button id="open-mentions-btn" class="hover:text-stone-300 underline underline-offset-4 decoration-stone-600 hover:decoration-stone-300 transition-colors">Mentions Légales</button></p>
     </footer>
 
     <script>
@@ -535,6 +548,57 @@
             }
         });
 
-    </script>
+
+        // Mentions Légales Modal Logic
+        const mentionsModal = document.getElementById('mentions-modal');
+        const openMentionsBtn = document.getElementById('open-mentions-btn');
+        const closeMentionsBtn = document.getElementById('close-mentions-btn');
+        const mentionsModalContent = document.getElementById('mentions-modal-content');
+
+        function openModal() {
+            mentionsModal.classList.remove('hidden');
+            // Force reflow
+            void mentionsModal.offsetWidth;
+            mentionsModal.classList.remove('opacity-0');
+            mentionsModalContent.classList.remove('scale-95');
+            mentionsModalContent.classList.add('scale-100');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            mentionsModal.classList.add('opacity-0');
+            mentionsModalContent.classList.remove('scale-100');
+            mentionsModalContent.classList.add('scale-95');
+
+            // Wait for transition to finish
+            setTimeout(() => {
+                mentionsModal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore background scrolling
+            }, 300);
+        }
+
+        if (openMentionsBtn && mentionsModal && closeMentionsBtn) {
+            openMentionsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+
+            closeMentionsBtn.addEventListener('click', closeModal);
+
+            // Close when clicking outside
+            mentionsModal.addEventListener('click', (e) => {
+                if (e.target === mentionsModal) {
+                    closeModal();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !mentionsModal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        }
+</script>
 </body>
 </html>
