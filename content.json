@@ -1,0 +1,161 @@
+{
+  "navigation": {
+    "logo": "Alice Maurage",
+    "links": [
+      {"href": "#apropos", "text": "Qui suis-je"},
+      {"href": "#pourqui", "text": "Pour qui"},
+      {"href": "#deroulement", "text": "Déroulement"},
+      {"href": "#contact", "text": "Prendre RDV"}
+    ],
+    "mobileLinks": [
+      {"href": "#apropos", "text": "Qui suis-je"},
+      {"href": "#pourqui", "text": "Pour qui"},
+      {"href": "#deroulement", "text": "Déroulement"},
+      {"href": "#contact", "text": "Contact"}
+    ]
+  },
+  "hero": {
+    "titleLine1": "Art-Thérapeute",
+    "titleLine2": "Clinique",
+    "subtitle": "Un soin thérapeutique non médicamenteux pour apaiser l'anxiété et réveiller la mémoire.<br><span class=\"font-medium text-teal-700 block mt-2\">Guérande • La Baule • Cap Atlantique • Saint Nazaire</span>",
+    "ctaText": "Appel découverte gratuit"
+  },
+  "apropos": {
+    "titleLine1": "Plus qu'une passion,",
+    "titleLine2": "une expertise.",
+    "introText": "Je suis <strong>Alice Maurage</strong>, art-thérapeute certifiée. Mon approche est strictement <strong>clinique</strong> : elle ne vise pas l'apprentissage artistique, mais le soin psychique et émotionnel.",
+    "paragraphs": [
+      "L'art-thérapie que je pratique est fondée sur une compréhension rigoureuse de la psychologie et de la neurologie. Chaque séance est pensée pour répondre à des objectifs thérapeutiques précis, définis avec vous ou avec l'équipe médicale encadrante.",
+      "Que vous fassiez face à la maladie (Alzheimer, Parkinson...), à un deuil, à une dépression ou simplement à une période de stress aigu, je vous accompagne pour remettre en mouvement ce qui s'est figé, en utilisant le processus créatif comme moteur de soin."
+    ],
+    "imageAlt": "Alice Maurage Art Thérapeute"
+  },
+  "pourqui": {
+    "titleLine1": "Une réponse adaptée",
+    "titleLine2": "à vos besoins",
+    "description": "L'art-thérapie clinique s'adresse à toute personne en souffrance (physique ou psychique), sans aucun prérequis artistique. L'œuvre n'est pas le but, elle est le moyen.",
+    "cards": [
+      {
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-teal-600\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z\" /></svg>",
+        "title": "Seniors & Pathologies",
+        "items": [
+          "Maladies neurodégénératives (Alzheimer, Parkinson...)",
+          "Stimulation cognitive et sensorielle",
+          "Maintien de l'autonomie et de la motricité fine",
+          "Lutte contre l'isolement et la dépression",
+          "Accompagnement de fin de vie"
+        ]
+      },
+      {
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-teal-600\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z\" /></svg>",
+        "title": "Adultes",
+        "items": [
+          "Gestion de l'anxiété et du stress chronique",
+          "Épuisement professionnel (Burn-out)",
+          "Traversée d'une épreuve (deuil, séparation, maladie)",
+          "Reconstruction de l'estime de soi",
+          "Troubles du comportement alimentaire"
+        ]
+      },
+      {
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-teal-600\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z\" /></svg>",
+        "title": "Institutions & Domicile",
+        "items": [
+          "Intervention en EHPAD et résidences autonomie",
+          "Centres hospitaliers et cliniques (SSR, psychiatrie)",
+          "Foyers d'accueil médicalisés",
+          "Séances à domicile sur la presqu'île guérandaise",
+          "Ateliers thérapeutiques de groupe"
+        ]
+      }
+    ]
+  },
+  "deroulement": {
+    "titleLine1": "Comment se déroule",
+    "titleLine2": "une séance ?",
+    "steps": [
+      {
+        "number": "01",
+        "title": "L'Entretien Préliminaire",
+        "text": "Une première rencontre indispensable pour faire connaissance, évaluer vos besoins, prendre connaissance du dossier médical si nécessaire, et définir les objectifs thérapeutiques (apaisement, stimulation cognitive, rééducation motrice...)."
+      },
+      {
+        "number": "02",
+        "title": "Le Temps d'Accueil",
+        "text": "Chaque séance s'ouvre par un temps d'ancrage. Nous faisons le point sur votre état physique et émotionnel de l'instant pour adapter la proposition du jour."
+      },
+      {
+        "number": "03",
+        "title": "Le Temps de Création",
+        "text": "Je vous propose un dispositif sur-mesure (arts plastiques, modelage, écriture, expression corporelle...). Vous êtes le créateur, je suis le garant du cadre thérapeutique. Je vous accompagne techniquement et psychologiquement dans ce processus."
+      },
+      {
+        "number": "04",
+        "title": "L'Échange et le Bilan",
+        "text": "La séance se clôture par un retour sur ce qui a été vécu pendant la création. L'œuvre produite est conservée dans le cadre du secret professionnel. Des bilans réguliers (avec vous ou l'équipe médicale) permettent d'évaluer l'évolution du soin."
+      }
+    ]
+  },
+  "faq": {
+    "titleLine1": "Questions",
+    "titleLine2": "fréquentes",
+    "questions": [
+      {
+        "question": "Faut-il savoir dessiner ou peindre pour faire de l'art-thérapie ?",
+        "answer": "Non, c'est l'idée reçue la plus fréquente. L'art-thérapie clinique n'est pas un cours d'art. Aucune compétence technique n'est requise. Ce qui importe, c'est ce qui se passe pendant que vous créez (l'apaisement, la concentration, l'expression d'une émotion), pas l'esthétique du résultat final."
+      },
+      {
+        "question": "Où se déroulent les séances ?",
+        "answer": "J'interviens principalement à domicile sur la presqu'île guérandaise (Guérande, La Baule, Pornichet, Le Pouliguen, Batz-sur-Mer, Le Croisic, Saint-Lyphard...) et la région nazairienne. J'interviens également en institution (EHPAD, hôpitaux, cliniques) sur devis."
+      },
+      {
+        "question": "L'art-thérapie peut-elle remplacer un suivi médical ou psychologique ?",
+        "answer": "En aucun cas. L'art-thérapie est une thérapie complémentaire non médicamenteuse. Elle s'inscrit parfaitement dans une prise en charge pluridisciplinaire (avec médecin traitant, psychologue, orthophoniste, psychomotricien...), mais ne se substitue pas à un diagnostic ou à un traitement médical."
+      },
+      {
+        "question": "L'art-thérapie est-elle remboursée ?",
+        "answer": "Les séances ne sont pas prises en charge par la Sécurité Sociale. En revanche, de plus en plus de mutuelles proposent des forfaits annuels pour le remboursement de médecines douces ou thérapies alternatives. Une facture vous sera remise à l'issue de chaque séance."
+      }
+    ]
+  },
+  "contact": {
+    "titleLine1": "Parlons de",
+    "titleLine2": "votre projet",
+    "description": "Vous souhaitez mettre en place un suivi pour vous-même, un proche ou au sein de votre établissement ? Contactez-moi pour un premier échange gratuit par téléphone.",
+    "phone": "06 77 15 69 10",
+    "email": "alice@maurage.fr"
+  },
+  "mentionsModal": {
+    "title": "Mentions Légales",
+    "sections": [
+      {
+        "title": "Éditeur du site",
+        "content": "<p>Le site internet maurage.fr est édité par :</p><p>Identité : Madame Maurage Alice, Entrepreneur Individuel (EI).</p><p>SIRET : undefined.</p><p>Siège social : undefined.</p><p>Directeur de la publication : Madame Maurage Alice.</p><p>Contact : alice@maurage.fr | 06 77 15 69 10</p>"
+      },
+      {
+        "title": "Hébergement du site",
+        "content": "<p>Le site est hébergé par Mr MATHIEU Eliott<br>59 rue du grand verger 54000 Nancy France<br>eliott.mathieu.pro@gmail.com<br>+33763463096</p>"
+      },
+      {
+        "title": "Activité et Réglementation",
+        "content": "<p>Art-thérapeute.</p>"
+      },
+      {
+        "title": "Médiation de la consommation",
+        "content": "<p>Conformément aux articles L.612-1 et suivants du Code de la consommation, en cas de litige non résolu avec le prestataire, le Client peut recourir gratuitement au médiateur de la consommation suivant :</p><p>Organisme : CNPM - MÉDIATION - CONSOMMATION<br>Adresse : 27, avenue de la Libération – 42400 SAINT-CHAMOND<br>Site web : <a href=\"https://www.cnpm-mediation-consommation.eu\" class=\"text-teal-600 hover:underline\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.cnpm-mediation-consommation.eu</a></p>"
+      },
+      {
+        "title": "Propriété intellectuelle",
+        "content": "<p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques. La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>"
+      },
+      {
+        "title": "Avertissement Médical (Clause de non-substitution)",
+        "content": "<p>Les prestations proposées par Madame Maurage Alice ne sont pas des actes médicaux. Elles s'inscrivent dans une démarche de bien-être et d'hygiène de vie. Elles ne remplacent en aucun cas une consultation médicale, un diagnostic ou un traitement prescrit par un professionnel de santé (médecin, psychiatre, pédiatre). Madame Maurage Alice ne demande jamais l'arrêt ou la modification d'un traitement médical en cours.</p>"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2026 Alice Maurage - Guérande",
+    "mentionsButtonText": "Mentions Légales"
+  }
+}

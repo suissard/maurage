@@ -10,6 +10,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
+
+        // Mobile Menu Button Logic
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            });
+        }
+
+
         tailwind.config = {
             theme: {
                 fontFamily: {
@@ -131,14 +144,9 @@
                     <div class="p-2 rounded-full bg-teal-600 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
                     </div>
-                    <span class="text-xl font-serif font-bold text-stone-800">Alice Maurage</span>
+                    <span id="nav-logo" class="text-xl font-serif font-bold text-stone-800"></span>
                 </div>
-                <div class="hidden md:flex space-x-6 items-center">
-                    <a href="#apropos" class="text-stone-600 hover:text-teal-600 font-medium">Qui suis-je</a>
-                    <a href="#pourqui" class="text-stone-600 hover:text-teal-600 font-medium">Pour qui</a>
-                    <a href="#deroulement" class="text-stone-600 hover:text-teal-600 font-medium">Déroulement</a>
-                    <a href="#contact" class="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition shadow-md hover:-translate-y-0.5">Prendre RDV</a>
-                </div>
+                <div id="desktop-nav-container" class="hidden md:flex space-x-6 items-center"></div>
                 <!-- Mobile Button -->
                 <button id="mobile-btn" class="md:hidden text-stone-600">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
@@ -146,13 +154,7 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 absolute w-full left-0 top-full px-4 py-4 shadow-lg flex-col gap-4">
-            <a href="#apropos" class="block text-lg font-medium text-stone-600 mobile-link">Qui suis-je</a>
-            <a href="#pourqui" class="block text-lg font-medium text-stone-600 mobile-link">Pour qui</a>
-            <a href="#deroulement" class="block text-lg font-medium text-stone-600 mobile-link">Déroulement</a>
-            <a href="#contact" class="block text-lg font-bold text-teal-600 mobile-link">Contact</a>
-        </div>
-    </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 absolute w-full left-0 top-full px-4 py-4 shadow-lg flex-col gap-4"></div></nav>
 
     <!-- Hero Section -->
     <header class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
@@ -163,16 +165,9 @@
                 <!-- SVG injected via JS -->
             </div>
             
-            <p class="text-lg md:text-2xl text-stone-600 font-light mb-8 max-w-2xl mx-auto reveal">
-                Un soin thérapeutique non médicamenteux pour apaiser l'anxiété et réveiller la mémoire.
-                <br>
-                <span class="font-medium text-teal-700 block mt-2">Guérande • La Baule • Cap Atlantique • Saint Nazaire</span>
-                
-            </p>
+            <p id="hero-subtitle" class="text-lg md:text-2xl text-stone-600 font-light mb-8 max-w-2xl mx-auto reveal"></p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 reveal">
-                <a href="#contact" class="px-8 py-4 bg-teal-600 text-white rounded-full font-bold hover:bg-teal-700 transition shadow-lg flex items-center justify-center gap-2">
-                    Appel découverte gratuit
-                </a>
+                <a id="hero-cta" href="#contact" class="px-8 py-4 bg-teal-600 text-white rounded-full font-bold hover:bg-teal-700 transition shadow-lg flex items-center justify-center gap-2"></a>
                 <div class="flex items-center justify-center gap-2 text-stone-500 text-sm font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     Remboursé par certaines mutuelles
@@ -212,31 +207,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <!-- Title Container -->
             <div id="title-pourqui" class="mb-12"></div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Seniors -->
-                <!-- Seniors -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
-                    <div class="text-teal-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
-                    <h3 class="text-xl font-bold text-center mb-2">Seniors (Mémoire)</h3>
-                    <p class="text-sm text-center text-stone-600">Stimuler la mémoire et l'autonomie. Un moment de répit apaisant face à Alzheimer ou Parkinson.</p>
-                </div>
-                <!-- Actifs -->
-                <!-- Actifs -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
-                    <div class="text-orange-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
-                    <h3 class="text-xl font-bold text-center mb-2">Actifs (Stress/Burn-out)</h3>
-                    <p class="text-sm text-center text-stone-600">Déposer la charge mentale. Un espace neutre pour prévenir ou soigner l'épuisement professionnel.</p>
-                </div>
-                <!-- Ados -->
-                <!-- Ados -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
-                    <div class="text-indigo-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-                    <h3 class="text-xl font-bold text-center mb-2">Adolescents</h3>
-                    <p class="text-sm text-center text-stone-600">Confiance en soi, anxiété scolaire. S'exprimer autrement quand les mots sont bloqués.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div id="pourqui-cards" class="grid md:grid-cols-3 gap-8"></div></div></section>
 
     <!-- SECTION 3: Déroulement (Nouveau!) -->
     <section id="deroulement" class="py-16 bg-white">
@@ -338,73 +309,33 @@
         </div>
     </section>
 
-    <!-- Mentions Légales -->
-    <section id="mentions-legales" class="py-16 bg-stone-50 text-sm text-stone-600">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl font-serif font-bold text-stone-800 mb-8 text-center reveal">Mentions Légales</h2>
 
-            <div class="space-y-6 reveal">
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Éditeur du site</h3>
-                    <p>Le site internet maurage.fr est édité par :</p>
-                    <p>Identité : Madame Maurage Alice, Entrepreneur Individuel (EI).</p>
-                    <p>SIRET : undefined.</p>
-                    <p>Siège social : undefined.</p>
-                    <p>Directeur de la publication : Madame Maurage Alice.</p>
-                    <p>Contact : alice@maurage.fr | 06 77 15 69 10</p>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Hébergement du site</h3>
-                    <p>Le site est hébergé par Mr MATHIEU Eliott<br>59 rue du grand verger 54000 Nancy France<br>eliott.mathieu.pro@gmail.com<br>+33763463096</p>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Activité et Réglementation</h3>
-                    <p>Art-thérapeute.</p>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Médiation de la consommation</h3>
-                    <p>Conformément aux articles L.612-1 et suivants du Code de la consommation, en cas de litige non résolu avec le prestataire, le Client peut recourir gratuitement au médiateur de la consommation suivant :</p>
-                    <p>Organisme : CNPM - MÉDIATION - CONSOMMATION<br>Adresse : 27, avenue de la Libération – 42400 SAINT-CHAMOND<br>Site web : <a href="https://www.cnpm-mediation-consommation.eu" class="text-teal-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.cnpm-mediation-consommation.eu</a></p>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Propriété intellectuelle</h3>
-                    <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques. La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Avertissement Médical (Clause de non-substitution)</h3>
-                    <p>Les prestations proposées par Madame Maurage Alice ne sont pas des actes médicaux. Elles s'inscrivent dans une démarche de bien-être et d'hygiène de vie. Elles ne remplacent en aucun cas une consultation médicale, un diagnostic ou un traitement prescrit par un professionnel de santé (médecin, psychiatre, pédiatre). Madame Maurage Alice ne demande jamais l'arrêt ou la modification d'un traitement médical en cours.</p>
-                </div>
+    <!-- Mentions Légales Modal -->
+    <div id="mentions-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0 duration-300">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col relative transform scale-95 transition-transform duration-300" id="mentions-modal-content">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-stone-100">
+                <h2 id="mentions-modal-title" class="text-2xl font-serif font-bold text-stone-800"></h2>
+                <button id="close-mentions-btn" class="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors" aria-label="Fermer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-        </div>
-    </section>
+
+            <!-- Body -->
+            <div id="mentions-modal-body" class="p-6 overflow-y-auto text-sm text-stone-600 space-y-6"></div></div></div>
+    </div>
+
 
     <!-- Footer -->
     <footer class="bg-stone-900 text-stone-500 py-8 text-center text-sm">
-        <p>&copy; 2026 Alice Maurage - Guérande • <a href="#mentions-legales" class="hover:text-stone-300">Mentions Légales</a></p>
+        <p><span id="footer-copyright"></span> • <button id="open-mentions-btn" class="hover:text-stone-300 underline underline-offset-4 decoration-stone-600 hover:decoration-stone-300 transition-colors"></button></p>
     </footer>
 
     <script>
 
-        // Mobile Menu
-        const btn = document.getElementById('mobile-btn');
-        const menu = document.getElementById('mobile-menu');
-        const links = document.querySelectorAll('.mobile-link');
         
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        });
-
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            });
         });
 
         // Animation au scroll
@@ -506,35 +437,281 @@
 
         // Initialize All Titles
         document.addEventListener('DOMContentLoaded', () => {
-            // Hero
-            new AnimatedTitle('hero-title-container', 'Art-Thérapeute', 'Clinique', { fontSizeMain: 'clamp(2.5rem, 8vw, 3.5rem)', fontSizeAccent: 'clamp(3rem, 10vw, 4rem)' });
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                // Navigation
+                const navLogo = document.getElementById('nav-logo');
+                if(navLogo) navLogo.textContent = data.navigation.logo;
+
+                const desktopNav = document.getElementById('desktop-nav-container');
+                if (desktopNav) {
+                    data.navigation.links.forEach((link, idx) => {
+                        const a = document.createElement('a');
+                        a.href = link.href;
+                        // The last one is a button
+                        if (idx === data.navigation.links.length - 1) {
+                            a.className = 'bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition shadow-md hover:-translate-y-0.5';
+                        } else {
+                            a.className = 'text-stone-600 hover:text-teal-600 font-medium';
+                        }
+                        a.textContent = link.text;
+                        desktopNav.appendChild(a);
+                    });
+                }
+
+                const mobileNav = document.getElementById('mobile-menu');
+                if(mobileNav) {
+                    data.navigation.mobileLinks.forEach((link, idx) => {
+                        const a = document.createElement('a');
+                        a.href = link.href;
+                        if (idx === data.navigation.mobileLinks.length - 1) {
+                            a.className = 'block text-lg font-bold text-teal-600 mobile-link';
+                        } else {
+                            a.className = 'block text-lg font-medium text-stone-600 mobile-link';
+                        }
+                        a.textContent = link.text;
+                        mobileNav.appendChild(a);
+                    });
+                }
+
+                // Hero
+                const heroSub = document.getElementById('hero-subtitle');
+                if(heroSub) heroSub.innerHTML = data.hero.subtitle;
+                const heroCta = document.getElementById('hero-cta');
+                if(heroCta) heroCta.innerHTML = `${data.hero.ctaText}`;
+
+                // Apropos
+                const aproposIntro = document.getElementById('apropos-intro');
+                if(aproposIntro) aproposIntro.innerHTML = data.apropos.introText;
+                const aproposContainer = document.getElementById('apropos-paragraphs');
+                if (aproposContainer) {
+                    data.apropos.paragraphs.forEach(pText => {
+                        const p = document.createElement('p');
+                        p.textContent = pText;
+                        aproposContainer.appendChild(p);
+                    });
+                }
+
+                // Pour Qui
+                const pourquiDesc = document.getElementById('pourqui-desc');
+                if(pourquiDesc) pourquiDesc.textContent = data.pourqui.description;
+                const pourquiCards = document.getElementById('pourqui-cards');
+                if (pourquiCards) {
+                    data.pourqui.cards.forEach((card, index) => {
+                        const div = document.createElement('div');
+                        div.className = `bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow reveal delay-${(index + 1) * 100}`;
+
+                        const iconDiv = document.createElement('div');
+                        iconDiv.className = 'w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center mb-6';
+                        iconDiv.innerHTML = card.icon;
+                        div.appendChild(iconDiv);
+
+                        const h3 = document.createElement('h3');
+                        h3.className = 'text-xl font-serif font-bold text-stone-800 mb-4';
+                        h3.textContent = card.title;
+                        div.appendChild(h3);
+
+                        const ul = document.createElement('ul');
+                        ul.className = 'space-y-3 text-stone-600';
+                        card.items.forEach(itemText => {
+                            const li = document.createElement('li');
+                            li.className = 'flex items-start';
+                            li.innerHTML = `<span class="text-teal-600 mr-2">•</span><span>${itemText}</span>`;
+                            ul.appendChild(li);
+                        });
+                        div.appendChild(ul);
+                        pourquiCards.appendChild(div);
+                    });
+                }
+
+                // Deroulement
+                const deroulementSteps = document.getElementById('deroulement-steps');
+                if (deroulementSteps) {
+                    data.deroulement.steps.forEach((step, index) => {
+                        const stepDiv = document.createElement('div');
+                        stepDiv.className = `relative flex items-center md:justify-between reveal delay-${(index + 1) * 100} ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`;
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = `ml-12 md:ml-0 md:w-5/12 ${index % 2 !== 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`;
+
+                        const innerDiv = document.createElement('div');
+                        innerDiv.className = 'bg-white p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow';
+
+                        const h3 = document.createElement('h3');
+                        h3.className = 'text-xl font-serif font-bold text-stone-800 mb-3';
+                        h3.textContent = step.title;
+
+                        const p = document.createElement('p');
+                        p.className = 'text-stone-600 leading-relaxed';
+                        p.textContent = step.text;
+
+                        innerDiv.appendChild(h3);
+                        innerDiv.appendChild(p);
+                        contentDiv.appendChild(innerDiv);
+
+                        const numberDiv = document.createElement('div');
+                        numberDiv.className = 'absolute left-0 md:left-1/2 w-10 h-10 -translate-x-1/2 rounded-full bg-teal-50 border-4 border-white flex items-center justify-center shadow-sm z-10';
+                        const numberSpan = document.createElement('span');
+                        numberSpan.className = 'text-teal-700 font-bold font-serif';
+                        numberSpan.textContent = step.number;
+                        numberDiv.appendChild(numberSpan);
+
+                        const emptyDiv = document.createElement('div');
+                        emptyDiv.className = 'hidden md:block md:w-5/12';
+
+                        stepDiv.appendChild(contentDiv);
+                        stepDiv.appendChild(numberDiv);
+                        stepDiv.appendChild(emptyDiv);
+                        deroulementSteps.appendChild(stepDiv);
+                    });
+                }
+
+                // FAQ
+                const faqQuestions = document.getElementById('faq-questions');
+                if (faqQuestions) {
+                    data.faq.questions.forEach(q => {
+                        const details = document.createElement('details');
+                        details.className = 'group bg-white rounded-xl shadow-sm [&_summary::-webkit-details-marker]:hidden';
+
+                        const summary = document.createElement('summary');
+                        summary.className = 'flex cursor-pointer items-center justify-between gap-1.5 p-6 text-stone-900';
+                        summary.innerHTML = `
+                            <h3 class="font-medium">${q.question}</h3>
+                            <span class="relative size-5 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-100 group-open:opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-0 group-open:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                                </svg>
+                            </span>`;
+
+                        const p = document.createElement('p');
+                        p.className = 'px-6 pb-6 text-stone-600 leading-relaxed faq-answer';
+                        p.textContent = q.answer;
+
+                        details.appendChild(summary);
+                        details.appendChild(p);
+                        faqQuestions.appendChild(details);
+                    });
+                }
+
+                // Contact
+                const contactDesc = document.getElementById('contact-desc');
+                if(contactDesc) contactDesc.textContent = data.contact.description;
+                const contactPhone = document.getElementById('contact-phone');
+                if(contactPhone) contactPhone.textContent = data.contact.phone;
+
+                const emailEl = document.getElementById('contact-email');
+                if (emailEl) {
+                    emailEl.textContent = data.contact.email;
+                    if(emailEl.tagName === 'A') emailEl.href = 'mailto:' + data.contact.email;
+                }
+
+                // Footer & Modal Setup
+                const footerCopyright = document.getElementById('footer-copyright');
+                if(footerCopyright) footerCopyright.textContent = data.footer.copyright;
+                const openMentionsBtn = document.getElementById('open-mentions-btn');
+                if(openMentionsBtn) openMentionsBtn.textContent = data.footer.mentionsButtonText;
+
+                const mentionsTitle = document.getElementById('mentions-modal-title');
+                if(mentionsTitle) mentionsTitle.textContent = data.mentionsModal.title;
+                const modalBody = document.getElementById('mentions-modal-body');
+                if (modalBody) {
+                    data.mentionsModal.sections.forEach(section => {
+                        const div = document.createElement('div');
+                        const h3 = document.createElement('h3');
+                        h3.className = 'font-bold text-stone-800 mb-2';
+                        h3.textContent = section.title;
+                        div.appendChild(h3);
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.innerHTML = section.content;
+                        div.appendChild(contentDiv);
+
+                        modalBody.appendChild(div);
+                    });
+                }
+
+                // Re-initialize intersection observers for newly injected reveal elements
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+                // Initialize Animated Titles using data from JSON
+                new AnimatedTitle('hero-title-container', data.hero.titleLine1, data.hero.titleLine2, { fontSizeMain: 'clamp(2.5rem, 8vw, 3.5rem)', fontSizeAccent: 'clamp(3rem, 10vw, 4rem)' });
+                new AnimatedTitle('title-apropos', data.apropos.titleLine1, data.apropos.titleLine2, { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+                new AnimatedTitle('title-pourqui', data.pourqui.titleLine1, data.pourqui.titleLine2, { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+                new AnimatedTitle('title-deroulement', data.deroulement.titleLine1, data.deroulement.titleLine2, { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+                new AnimatedTitle('title-faq', data.faq.titleLine1, data.faq.titleLine2, { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+                new AnimatedTitle('title-contact', data.contact.titleLine1, data.contact.titleLine2, { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+
+                const contactContainer = document.getElementById('title-contact');
+                if(contactContainer) {
+                     const style = document.createElement('style');
+                     style.textContent = `#title-contact .animated-text-main, #title-contact .animated-text-accent { color: #f0fdfa !important; } #title-contact path { stroke: #ccfbf1 !important; opacity: 0.3; }`;
+                     contactContainer.appendChild(style);
+                }
+            })
+            .catch(error => console.error('Error loading content:', error));
+    });
+
+    // Mentions Légales Modal Logic
+        const mentionsModal = document.getElementById('mentions-modal');
+        const openMentionsBtn = document.getElementById('open-mentions-btn');
+        const closeMentionsBtn = document.getElementById('close-mentions-btn');
+        const mentionsModalContent = document.getElementById('mentions-modal-content');
+
+        function openModal() {
+            mentionsModal.classList.remove('hidden');
+            // Force reflow
+            void mentionsModal.offsetWidth;
+            mentionsModal.classList.remove('opacity-0');
+            mentionsModalContent.classList.remove('scale-95');
+            mentionsModalContent.classList.add('scale-100');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            mentionsModal.classList.add('opacity-0');
+            mentionsModalContent.classList.remove('scale-100');
+            mentionsModalContent.classList.add('scale-95');
             
-            // Apropos
-            new AnimatedTitle('title-apropos', "Plus qu'une passion,", "une expertise.", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+            // Wait for transition to finish
+            setTimeout(() => {
+                mentionsModal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore background scrolling
+            }, 300);
+        }
 
-            // Pour Qui
-            new AnimatedTitle('title-pourqui', "Une réponse adaptée", "à vos besoins", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+        if (openMentionsBtn && mentionsModal && closeMentionsBtn) {
+            openMentionsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
 
-            // Deroulement
-            new AnimatedTitle('title-deroulement', "Comment se déroule", "une séance ?", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+            closeMentionsBtn.addEventListener('click', closeModal);
 
-            // FAQ
-            new AnimatedTitle('title-faq', "Questions", "fréquentes", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+            // Close when clicking outside
+            mentionsModal.addEventListener('click', (e) => {
+                if (e.target === mentionsModal) {
+                    closeModal();
+                }
+            });
 
-            // Contact
-            new AnimatedTitle('title-contact', "Parlons de", "votre projet", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
-            
-            // Contact color override
-            const contactContainer = document.getElementById('title-contact');
-            if(contactContainer) {
-                 const style = document.createElement('style');
-                 // Target specific letters in this container
-                 // Target specific letters in this container
-                 style.textContent = `#title-contact .animated-text-main, #title-contact .animated-text-accent { color: #f0fdfa !important; } #title-contact path { stroke: #ccfbf1 !important; opacity: 0.3; }`;
-                 contactContainer.appendChild(style);
-            }
-        });
-
-    </script>
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !mentionsModal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        }
+</script>
 </body>
 </html>
