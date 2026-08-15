@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alice Maurage | Art-Thérapeute Guérande</title>
-    <meta name="description" content="Art-thérapie clinique à domicile et en institution sur Guérande.">
+    <title>Alice Maurage | Art-Thérapeute Clinique certifiée RNCP à Guérande & Cap Atlantique</title>
+    <meta name="description" content="Art-thérapie clinique à domicile et en institution sur Cap Atlantique et la Presqu'île Guérandaise (Guérande, La Baule, Pornichet, Saint-Nazaire). Accompagnement seniors, adultes, ados et EHPAD.">
+    <meta name="keywords" content="art-thérapie, art-thérapeute, Cap Atlantique, Guérande, La Baule, Saint-Nazaire, Pornichet, clinique, alzheimer, seniors, burn-out, émotions, domicile, EHPAD">
+    <meta name="author" content="Alice Maurage">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Alice Maurage | Art-Thérapeute Clinique certifiée RNCP • Guérande & Cap Atlantique">
+    <meta property="og:description" content="Un soin thérapeutique non médicamenteux pour apaiser l'anxiété, réveiller la mémoire et libérer les émotions. À domicile et en institution sur Cap Atlantique.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maurage.fr">
+    <meta property="og:image" content="./aliceMaurage.jpg">
+
+    <!-- Google Fonts: Fraunces (Titres chaleureux & éditoriaux) & Plus Jakarta Sans (Corps moderne & lisible) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,13 +27,69 @@
         tailwind.config = {
             theme: {
                 fontFamily: {
-                    sans: ['Helvetica', 'Arial', 'sans-serif'],
-                    serif: ['Georgia', 'serif'],
+                    sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                    serif: ['"Fraunces"', 'Georgia', 'serif'],
                 },
                 extend: {
                     colors: {
-                        teal: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59' },
-                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 600: '#57534e', 800: '#292524', 900: '#1c1917' }
+                        sage: {
+                            50: '#f4f7f5',
+                            100: '#e5ece7',
+                            200: '#ceddd2',
+                            300: '#abc4b3',
+                            400: '#83a58e',
+                            500: '#648870',
+                            600: '#4e6d57',
+                            700: '#3f5646',
+                            800: '#34463a',
+                            900: '#2c3a31',
+                        },
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        warm: {
+                            50: '#faf8f5',
+                            100: '#f5f0e8',
+                            200: '#eae0d2',
+                            300: '#dccab3',
+                            400: '#cbb092',
+                            500: '#bd9a77',
+                            600: '#ad8464',
+                            700: '#906b52',
+                            800: '#755745',
+                            900: '#60483a',
+                        },
+                        terracotta: {
+                            50: '#fdf6f2',
+                            100: '#faece4',
+                            500: '#d97745',
+                            600: '#c55f2c',
+                            700: '#a3481e',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(15, 118, 110, 0.07)',
+                        'card': '0 4px 20px -2px rgba(44, 58, 49, 0.05)',
+                        'hover': '0 20px 35px -5px rgba(15, 118, 110, 0.12)',
                     }
                 }
             }
@@ -27,325 +97,1047 @@
     </script>
 
     <style>
+        /* Smooth Scroll & Base Transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        /* FAQ Static Styles */
-        .faq-answer {
-            /* Always visible */
-            display: block;
-        }
 
+        /* Staggered Delay Utilities */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
 
-        /* Text Staggered Animation */
-        .animated-text-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Artistic Brush Underline Container */
+        .art-underline {
             position: relative;
-            padding-bottom: 40px; /* Increased space for underline */
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
+            display: inline-block;
+            white-space: nowrap;
         }
-        
-        /* Simple Fade In for Text */
-        .animated-text-main, .animated-text-accent {
+
+        /* FAQ Accordion Transitions */
+        .faq-content {
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
             opacity: 0;
-            transform: translateY(10px);
-            font-family: 'Georgia', serif;
-            font-weight: bold;
-            line-height: 1.2;
-            display: block;
+        }
+        .faq-item.open .faq-content {
+            max-height: 400px;
+            opacity: 1;
+            padding-top: 0.75rem;
+            padding-bottom: 0.5rem;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
         }
 
-        .animated-text-main {
-            color: #2c2926; /* stone-800 */
-            font-size: 3rem; /* Fallback */
-            margin-bottom: 0.2rem;
+        /* Floating animation for badge */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
         }
 
-        .animated-text-accent {
-            color: #0d9488; /* teal-600 */
-            font-size: 3.5rem; /* Fallback */
-        }
-
-        .active .animated-text-main, 
-        .active .animated-text-accent {
-            animation: textFadeIn 1s ease-out forwards;
-        }
-        
-        /* Slight delay for the second line if it exists */
-        .active .animated-text-accent {
-            animation-delay: 0.2s;
-        }
-
-        @keyframes textFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Soulignement Vague */
-        .brush-stroke {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            opacity: 0;
-            fill: transparent;
-            /* Delay brush stroke until text finishes (approx 1s) */
-            transition: opacity 0.5s ease 1s; 
-            vector-effect: non-scaling-stroke;
-            position: absolute;
-            bottom: 0px; /* Aligned to the bottom of the container */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 40px; /* Fixed height for the SVG container */
-            pointer-events: none;
-        }
-        .active .brush-stroke {
-            animation: drawBrush 1.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1s forwards;
-            opacity: 0.5;
-        }
-
-        @keyframes drawBrush {
-            to { stroke-dashoffset: 0; }
+        /* Background Pattern */
+        .pattern-dots {
+            background-image: radial-gradient(rgba(15, 118, 110, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
     </style>
 </head>
-<body class="font-sans text-stone-700 bg-stone-50 overflow-x-hidden selection:bg-teal-200">
+<body class="font-sans text-stone-700 bg-warm-50 selection:bg-teal-100 selection:text-teal-900 overflow-x-hidden antialiased">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-white/95 backdrop-blur-sm shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-3.5 bg-warm-50/90 backdrop-blur-md border-b border-warm-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="p-2 rounded-full bg-teal-600 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                <!-- Brand / Logo -->
+                <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-1" aria-label="Accueil Alice Maurage">
+                    <div class="w-10 h-10 rounded-full bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r=".5"/>
+                            <circle cx="17.5" cy="10.5" r=".5"/>
+                            <circle cx="8.5" cy="7.5" r=".5"/>
+                            <circle cx="6.5" cy="12.5" r=".5"/>
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+                        </svg>
                     </div>
-                    <span class="text-xl font-serif font-bold text-stone-800">Alice Maurage</span>
+                    <div>
+                        <span class="block text-lg font-serif font-bold text-stone-800 tracking-tight group-hover:text-teal-800 transition-colors">Alice Maurage</span>
+                        <span class="block text-xs uppercase tracking-wider font-semibold text-teal-700">Art-Thérapeute Clinique</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-7 items-center">
+                    <a href="#approche" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">L'Approche</a>
+                    <a href="#pourqui" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Pour qui</a>
+                    <a href="#mediums" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Les Médiums</a>
+                    <a href="#deroulement" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Déroulement</a>
+                    <a href="#tarifs" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Tarifs & Mutuelle</a>
+                    <a href="#faq" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">FAQ</a>
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-teal-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-teal-800 transition shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                        <span>Prendre RDV</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
                 </div>
-                <div class="hidden md:flex space-x-6 items-center">
-                    <a href="#apropos" class="text-stone-600 hover:text-teal-600 font-medium">Qui suis-je</a>
-                    <a href="#pourqui" class="text-stone-600 hover:text-teal-600 font-medium">Pour qui</a>
-                    <a href="#deroulement" class="text-stone-600 hover:text-teal-600 font-medium">Déroulement</a>
-                    <a href="#contact" class="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition shadow-md hover:-translate-y-0.5">Prendre RDV</a>
-                </div>
-                <!-- Mobile Button -->
-                <button id="mobile-btn" class="md:hidden text-stone-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-btn" class="lg:hidden p-2 text-stone-700 hover:text-teal-700 hover:bg-warm-100 rounded-lg transition" aria-label="Menu principal" aria-expanded="false">
+                    <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                    <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 absolute w-full left-0 top-full px-4 py-4 shadow-lg flex-col gap-4">
-            <a href="#apropos" class="block text-lg font-medium text-stone-600 mobile-link">Qui suis-je</a>
-            <a href="#pourqui" class="block text-lg font-medium text-stone-600 mobile-link">Pour qui</a>
-            <a href="#deroulement" class="block text-lg font-medium text-stone-600 mobile-link">Déroulement</a>
-            <a href="#contact" class="block text-lg font-bold text-teal-600 mobile-link">Contact</a>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-lg border-b border-warm-200 absolute w-full left-0 top-full px-6 py-6 shadow-xl flex-col gap-4">
+            <a href="#approche" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">L'Approche</a>
+            <a href="#pourqui" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Pour qui</a>
+            <a href="#mediums" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Les Médiums</a>
+            <a href="#deroulement" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Déroulement d'une séance</a>
+            <a href="#tarifs" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Tarifs & Prise en charge</a>
+            <a href="#faq" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Questions fréquentes</a>
+            <div class="pt-4 border-t border-stone-100 flex flex-col gap-3">
+                <a href="#contact" class="w-full text-center bg-teal-700 text-white py-3 rounded-xl font-bold mobile-link shadow-md">Prendre Rendez-vous</a>
+                <a href="tel:0677156910" class="w-full text-center bg-stone-100 text-stone-800 py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    06 77 15 69 10
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-stone-100 -z-10"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <!-- Drawn Title Container -->
-            <div id="hero-title-container" class="mb-6 min-h-[8rem] md:min-h-[12rem] flex items-center justify-center relative">
-                <!-- SVG injected via JS -->
-            </div>
-            
-            <p class="text-lg md:text-2xl text-stone-600 font-light mb-8 max-w-2xl mx-auto reveal">
-                Un soin thérapeutique non médicamenteux pour apaiser l'anxiété et réveiller la mémoire.
-                <br>
-                <span class="font-medium text-teal-700 block mt-2">Guérande • La Baule • Cap Atlantique • Saint Nazaire</span>
+    <!-- HERO SECTION -->
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden pattern-dots">
+        <!-- Ambient decorative shapes -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-teal-100/60 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute top-1/2 -left-32 w-80 h-80 bg-warm-200/50 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal">
-                <a href="#contact" class="px-8 py-4 bg-teal-600 text-white rounded-full font-bold hover:bg-teal-700 transition shadow-lg flex items-center justify-center gap-2">
-                    Appel découverte gratuit
-                </a>
-                <div class="flex items-center justify-center gap-2 text-stone-500 text-sm font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    Remboursé par certaines mutuelles
+                <!-- Hero Left / Content -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    
+                    <!-- Pill Tag (Mention explicite Cap Atlantique) -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/80 border border-teal-200 text-teal-900 text-xs sm:text-sm font-semibold mb-6 reveal">
+                        <span class="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
+                        Art-Thérapie Clinique • Guérande • Cap Atlantique • La Baule • Saint-Nazaire
+                    </div>
+
+                    <!-- Main Heading with Organic Hand-Drawn Brush Wave Underline -->
+                    <h1 class="text-3.5xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-serif font-bold text-stone-900 leading-[1.18] mb-6 reveal delay-100">
+                        Retrouvez l'apaisement et stimulez vos ressources par 
+                        <span class="art-underline italic font-normal text-teal-800">
+                            l'expression créative.
+                        </span>
+                    </h1>
+
+                    <!-- Subtitle / Value Prop (Mention Cap Atlantique) -->
+                    <p class="text-base sm:text-lg md:text-xl text-stone-600 font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 reveal delay-200">
+                        Un soin thérapeutique non médicamenteux pour <strong>apaiser l'anxiété</strong>, <strong>libérer les émotions</strong> et <strong>stimuler la mémoire</strong>. Séances individuelles à domicile et collectives en institution sur l'ensemble de <strong>Cap Atlantique</strong> et la Presqu'île guérandaise.
+                    </p>
+
+                    <!-- Trust Pillars -->
+                    <div class="grid grid-cols-2 sm:grid-cols-2 gap-3 mb-8 max-w-xl mx-auto lg:mx-0 text-left reveal delay-300">
+                        <div class="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-warm-200/80 shadow-xs">
+                            <div class="p-1.5 rounded-lg bg-teal-50 text-teal-700 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-stone-700">À domicile & en institution</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-warm-200/80 shadow-xs">
+                            <div class="p-1.5 rounded-lg bg-teal-50 text-teal-700 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-stone-700">Aucun prérequis artistique</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-warm-200/80 shadow-xs">
+                            <div class="p-1.5 rounded-lg bg-teal-50 text-teal-700 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-stone-700">Certifiée RNCP & Éthique</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-warm-200/80 shadow-xs">
+                            <div class="p-1.5 rounded-lg bg-teal-50 text-teal-700 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-stone-700">Prise en charge mutuelles</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 reveal delay-400">
+                        <a href="#contact" class="w-full sm:w-auto px-7 py-4 bg-teal-700 text-white rounded-full font-bold text-base hover:bg-teal-800 transition shadow-md hover:shadow-hover hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group">
+                            <span>Échange téléphonique offert (15 min)</span>
+                            <svg class="group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="#approche" class="w-full sm:w-auto px-6 py-4 bg-warm-100 hover:bg-warm-200 text-stone-800 rounded-full font-semibold text-base transition flex items-center justify-center gap-2">
+                            Comprendre la démarche
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Hero Right / Portrait & Visual Card -->
+                <div class="lg:col-span-5 reveal delay-200">
+                    <div class="relative max-w-md mx-auto">
+                        
+                        <!-- Background Glow Frame -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-teal-200/50 via-warm-300/40 to-sage-200/50 rounded-3xl blur-xl opacity-70 -z-10"></div>
+
+                        <!-- Image Container with warm border -->
+                        <div class="relative bg-white p-3 rounded-3xl shadow-card border border-warm-200 overflow-hidden">
+                            <div class="relative h-[380px] sm:h-[420px] rounded-2xl overflow-hidden bg-stone-100">
+                                <img src="./aliceMaurage.jpg" alt="Alice Maurage, Art-Thérapeute à Guérande et Cap Atlantique" class="w-full h-full object-cover object-top hover:scale-102 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent"></div>
+                                
+                                <!-- Inner Overlay Label -->
+                                <div class="absolute bottom-4 left-4 right-4 text-white">
+                                    <div class="text-lg font-serif font-bold">Alice Maurage</div>
+                                    <div class="text-xs text-teal-200 font-medium">Art-thérapeute clinicienne certifiée RNCP</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge: Matériel Fourni -->
+                        <div class="absolute -bottom-5 -left-4 sm:-left-6 bg-white py-3 px-4 rounded-2xl shadow-lg border border-warm-200 flex items-center gap-3 animate-float">
+                            <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg">
+                                🎨
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-stone-900">100% du matériel fourni</div>
+                                <div class="text-[11px] text-stone-500">Argile, peinture, collages, pastels...</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge: Localisation Cap Atlantique -->
+                        <div class="hidden sm:flex absolute -top-4 -right-4 bg-white/95 backdrop-blur-sm py-2.5 px-3.5 rounded-2xl shadow-md border border-warm-200 items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="text-teal-700" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="text-xs font-semibold text-stone-800">Guérande • Cap Atlantique</span>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
 
-    <!-- SECTION 1: Qui suis-je (Réassurance Clinique) -->
-    <section id="apropos" class="py-16 bg-white">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
-            <div class="md:w-1/2 reveal">
-                 <!-- Placeholder Photo Pro -->
-                <div class="relative bg-stone-200 rounded-2xl overflow-hidden shadow-lg h-80 w-full md:w-80 mx-auto">
-                     <img src="./aliceMaurage.jpg" alt="Alice Maurage Art Thérapeute" class="object-cover w-full h-full" />
-                </div>
-            </div>
-            <div class="md:w-1/2 reveal">
-                <!-- Title Container -->
-                <div id="title-apropos" class="mb-4"></div>
-                <p class="text-stone-600 mb-4 leading-relaxed">
-                    Je suis <strong>Alice Maurage</strong>, art-thérapeute certifiée. Mon approche est strictement <strong>clinique</strong> : elle ne vise pas l'apprentissage artistique, mais le soin psychique et émotionnel.
-                </p>
-                <p class="text-stone-600 mb-6 leading-relaxed">
-                    J'interviens sur prescription ou demande directe pour accompagner les troubles cognitifs (Seniors), l'épuisement professionnel (Actifs) et les fragilités émotionnelles.
-                </p>
-                <div class="flex gap-4">
-                    <div class="bg-teal-50 px-4 py-2 rounded-lg text-teal-800 font-bold text-sm">Certifiée RNCP</div>
-                    <div class="bg-teal-50 px-4 py-2 rounded-lg text-teal-800 font-bold text-sm">Code de déontologie</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: Pour Qui (Personas) -->
-    <section id="pourqui" class="py-16 bg-stone-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <!-- Title Container -->
-            <div id="title-pourqui" class="mb-12"></div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Seniors -->
-                <!-- Seniors -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
-                    <div class="text-teal-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
-                    <h3 class="text-xl font-bold text-center mb-2">Seniors (Mémoire)</h3>
-                    <p class="text-sm text-center text-stone-600">Stimuler la mémoire et l'autonomie. Un moment de répit apaisant face à Alzheimer ou Parkinson.</p>
-                </div>
-                <!-- Actifs -->
-                <!-- Actifs -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
-                    <div class="text-orange-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
-                    <h3 class="text-xl font-bold text-center mb-2">Actifs (Stress/Burn-out)</h3>
-                    <p class="text-sm text-center text-stone-600">Déposer la charge mentale. Un espace neutre pour prévenir ou soigner l'épuisement professionnel.</p>
-                </div>
-                <!-- Ados -->
-                <!-- Ados -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal">
-                    <div class="text-indigo-600 mb-4 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-                    <h3 class="text-xl font-bold text-center mb-2">Adolescents</h3>
-                    <p class="text-sm text-center text-stone-600">Confiance en soi, anxiété scolaire. S'exprimer autrement quand les mots sont bloqués.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: Déroulement (Nouveau!) -->
-    <section id="deroulement" class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <!-- Title Container -->
-            <div id="title-deroulement" class="mb-10"></div>
-            <div class="space-y-8">
-                <!-- Etape 1 -->
-                <div class="flex gap-6 items-start reveal">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold">1</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-stone-800">L'Accueil et la Parole</h3>
-                        <p class="text-stone-600">Un temps d'échange court pour déposer votre état d'esprit du moment ("Météo intérieure") et définir l'intention de la séance.</p>
-                    </div>
-                </div>
-                <!-- Etape 2 -->
-                <div class="flex gap-6 items-start reveal">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold">2</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-stone-800">Le Temps de Création</h3>
-                        <p class="text-stone-600">Je vous propose un dispositif adapté (peinture, collage, argile...). <strong class="text-teal-600">Aucun jugement esthétique</strong>, vous créez librement guidé par mes consignes apaisantes.</p>
-                    </div>
-                </div>
-                <!-- Etape 3 -->
-                <div class="flex gap-6 items-start reveal">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold">3</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-stone-800">La Verbalisation</h3>
-                        <p class="text-stone-600">Nous regardons ensemble votre production. Ce temps permet de mettre des mots sur les ressenti et d'ancrer les bienfaits de la séance.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: FAQ (Pour lever les freins) -->
-    <section class="py-16 bg-teal-50">
-        <div class="max-w-3xl mx-auto px-4">
-            <!-- Title Container -->
-            <div id="title-faq" class="mb-10"></div>
-            
-            <div class="space-y-4">
-                <!-- Question 1 -->
-                <div class="bg-white rounded-xl shadow-sm p-4 faq-item reveal">
-                    <div class="flex justify-between items-center font-bold text-stone-800">
-                        Dois-je savoir dessiner ?
-                    </div>
-                    <div class="faq-answer text-stone-600 text-sm mt-2">
-                        <div class="pt-2">Absolument pas. L'art-thérapie ne vise pas à produire une œuvre d'art, mais à utiliser la matière pour s'exprimer. C'est même souvent plus efficace quand on "lâche prise" sur le résultat esthétique.</div>
-                    </div>
-                </div>
+    <!-- SECTION 1: L'APPROCHE CLINIQUE (Réassurance, posture et éthique) -->
+    <section id="approche" class="py-20 bg-white border-y border-warm-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Question 2 -->
-                <div class="bg-white rounded-xl shadow-sm p-4 faq-item reveal">
-                    <div class="flex justify-between items-center font-bold text-stone-800">
-                        Est-ce remboursé ?
+                <!-- Left column -->
+                <div class="lg:col-span-5 reveal">
+                    <div class="inline-flex items-center gap-2 text-teal-700 text-xs font-bold uppercase tracking-wider mb-3">
+                        <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                        Posture & Éthique
                     </div>
-                    <div class="faq-answer text-stone-600 text-sm mt-2">
-                        <div class="pt-2">La Sécurité Sociale ne rembourse pas encore l'art-thérapie. Cependant, de plus en plus de mutuelles proposent des forfaits "Médecines douces" ou "Psychologie" qui peuvent couvrir une partie des séances. Une facture vous sera remise.</div>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 leading-tight mb-6">
+                        Une pratique clinique fondée sur 
+                        <span class="art-underline text-teal-800">
+                            l'écoute et le non-jugement.
+                        </span>
+                    </h2>
+                    <p class="text-stone-600 leading-relaxed mb-5">
+                        L'art-thérapie clinique n'a <strong>aucune visée esthétique ou d'apprentissage</strong>. Il ne s'agit pas d'un cours de dessin, mais d'une méthode de soin psychique et relationnel.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed mb-6">
+                        Les médiums artistiques (matières, couleurs, formes) servent de <em>médiateurs thérapeutiques</em>. Ils permettent de contourner les blocages du langage pour exprimer ce qui ne peut être dit avec des mots.
+                    </p>
+                    
+                    <!-- Certification Pills -->
+                    <div class="flex flex-wrap gap-2.5 pt-2">
+                        <span class="bg-warm-100 text-stone-800 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-warm-200">
+                            🎓 Titre certifié RNCP
+                        </span>
+                        <span class="bg-warm-100 text-stone-800 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-warm-200">
+                            🔒 Secret professionnel & Déontologie
+                        </span>
+                        <span class="bg-warm-100 text-stone-800 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-warm-200">
+                            🤝 Cadre bienveillant & sécurisé
+                        </span>
                     </div>
                 </div>
 
-                <!-- Question 3 -->
-                <div class="bg-white rounded-xl shadow-sm p-4 faq-item reveal">
-                    <div class="flex justify-between items-center font-bold text-stone-800">
-                        Combien de temps dure une séance ?
+                <!-- Right column: 3 Pillars Cards -->
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5 reveal delay-100">
+                    
+                    <div class="bg-warm-50 p-6 rounded-2xl border border-warm-200/80 shadow-xs hover:border-teal-300 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Le processus avant tout</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            C'est le cheminement créatif, le ressenti des matières et le lâcher-prise qui soignent, jamais la perfection de l'objet final.
+                        </p>
                     </div>
-                    <div class="faq-answer text-stone-600 text-sm mt-2">
-                        <div class="pt-2">Une séance individuelle dure généralement entre 45 minutes et 1 heure. Pour les ateliers de groupe en institution, cela varie de 1h à 1h30.</div>
+
+                    <div class="bg-warm-50 p-6 rounded-2xl border border-warm-200/80 shadow-xs hover:border-teal-300 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                        </div>
+                        <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Un espace 100% protégé</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            Aucune interprétation sauvage. Vos productions vous appartiennent et sont accueillies dans un cadre confidentiel et sécurisant.
+                        </p>
                     </div>
+
+                    <div class="bg-warm-50 p-6 rounded-2xl border border-warm-200/80 shadow-xs hover:border-teal-300 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                        </div>
+                        <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Plaisir & Reconnexion</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            Réveiller l'élan vital, la curiosité sensorielle et valoriser l'estime de soi à travers la fierté d'avoir osé créer.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-50 p-6 rounded-2xl border border-warm-200/80 shadow-xs hover:border-teal-300 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Coordination de soin</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            Interventions en lien avec l'entourage, les soignants, médecins traitants, orthophonistes ou équipes d'EHPAD.
+                        </p>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-20 bg-teal-800 text-white text-center relative overflow-hidden">
-        <div class="relative z-10 max-w-3xl mx-auto px-4">
-            <!-- Title Container -->
-            <div id="title-contact" class="mb-4"></div>
-            <p class="text-teal-100 mb-10">L'appel découverte est gratuit et sans engagement. Il permet simplement de voir si je peux vous aider.</p>
+    <!-- SECTION 2: POUR QUI (4 Cibles & Bénéfices concrets) -->
+    <section id="pourqui" class="py-20 bg-warm-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="bg-white rounded-2xl p-8 text-stone-700 shadow-2xl flex flex-col md:flex-row gap-6 justify-center">
-                <a href="tel:06 77 15 69 10" class="flex-1 bg-stone-100 p-6 rounded-xl hover:bg-stone-200 transition group border border-stone-200">
-                    <div class="text-teal-600 mb-2 flex justify-center group-hover:scale-110 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <!-- Section Header with Animated Wave -->
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 text-teal-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                    À qui s'adresse l'art-thérapie ?
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-4xl font-serif font-bold text-stone-900 mb-4">
+                    Un accompagnement sur-mesure pour 
+                    <span class="art-underline text-teal-800">
+                        chaque étape de vie.
+                    </span>
+                </h2>
+                <p class="text-base text-stone-600">
+                    L'art-thérapie s'adapte aux capacités physiques, cognitives et émotionnelles de chacun.
+                </p>
+            </div>
+
+            <!-- 4 Grid Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- 1. Seniors & Aidants -->
+                <div class="bg-white rounded-2xl p-7 shadow-card hover:shadow-hover border border-warm-200/80 transition-all duration-300 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mb-2">Seniors & Aidants</h3>
+                        <div class="text-xs font-semibold text-teal-700 mb-4 uppercase tracking-wide">Mémoire & Autonomie</div>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Stimuler la mémoire sensorielle et la motricité. Un moment de répit apaisant et valorisant face aux maladies d'Alzheimer, Parkinson ou suite à un AVC.
+                        </p>
                     </div>
-                    <div class="font-bold text-lg">M'appeler</div>
-                    <div class="text-sm text-stone-500">06 77 15 69 10</div>
-                </a>
-                <a href="mailto:alice@maurage.fr" class="flex-1 bg-teal-600 text-white p-6 rounded-xl hover:bg-teal-700 transition group">
-                    <div class="text-white mb-2 flex justify-center group-hover:scale-110 transition">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <ul class="text-xs text-stone-500 space-y-2 pt-4 border-t border-warm-100">
+                        <li class="flex items-center gap-2"><span class="text-teal-600">✓</span> Maintien de l'autonomie cognitive</li>
+                        <li class="flex items-center gap-2"><span class="text-teal-600">✓</span> Reconnexion aux souvenirs de vie</li>
+                        <li class="flex items-center gap-2"><span class="text-teal-600">✓</span> Soulagement des aidants familiaux</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Adultes & Actifs -->
+                <div class="bg-white rounded-2xl p-7 shadow-card hover:shadow-hover border border-warm-200/80 transition-all duration-300 flex flex-col justify-between reveal delay-100">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-orange-100 text-terracotta-600 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mb-2">Adultes & Actifs</h3>
+                        <div class="text-xs font-semibold text-terracotta-600 mb-4 uppercase tracking-wide">Stress & Charge Mentale</div>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Déposer la charge mentale, prévenir ou traverser un burn-out, traverser un deuil ou une période de rupture en renouant avec son intériorité.
+                        </p>
                     </div>
-                    <div class="font-bold text-lg">M'envoyer un mail</div>
-                    <div href="mailto:alice@maurage.fr" class="text-sm text-teal-100">alice@maurage.fr</div>
-                </a>
+                    <ul class="text-xs text-stone-500 space-y-2 pt-4 border-t border-warm-100">
+                        <li class="flex items-center gap-2"><span class="text-terracotta-500">✓</span> Régulation du stress et de l'anxiété</li>
+                        <li class="flex items-center gap-2"><span class="text-terracotta-500">✓</span> Libération des blocages intimes</li>
+                        <li class="flex items-center gap-2"><span class="text-terracotta-500">✓</span> Reconnexion à son élan de vie</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Enfants & Adolescents -->
+                <div class="bg-white rounded-2xl p-7 shadow-card hover:shadow-hover border border-warm-200/80 transition-all duration-300 flex flex-col justify-between reveal delay-200">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mb-2">Enfants & Ados</h3>
+                        <div class="text-xs font-semibold text-indigo-700 mb-4 uppercase tracking-wide">Émotions & Confiance</div>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Faciliter l'expression quand les mots sont bloqués. Apaiser l'anxiété scolaire, les troubles du comportement, le TDAH et renforcer l'estime de soi.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-stone-500 space-y-2 pt-4 border-t border-warm-100">
+                        <li class="flex items-center gap-2"><span class="text-indigo-600">✓</span> Canalisation des émotions fortes</li>
+                        <li class="flex items-center gap-2"><span class="text-indigo-600">✓</span> Développement de la concentration</li>
+                        <li class="flex items-center gap-2"><span class="text-indigo-600">✓</span> Médiation ludique non stigmatisante</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Institutions & Établissements (B2B) -->
+                <div class="bg-white rounded-2xl p-7 shadow-card hover:shadow-hover border border-warm-200/80 transition-all duration-300 flex flex-col justify-between reveal delay-300">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-800 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mb-2">Institutions & EHPAD</h3>
+                        <div class="text-xs font-semibold text-sage-800 mb-4 uppercase tracking-wide">Ateliers & Suivis de Soin</div>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Interventions en EHPAD, résidences seniors, IME, cliniques et associations sur Cap Atlantique. Ateliers de groupe ou suivis individuels avec compte-rendu d'objectifs.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-stone-500 space-y-2 pt-4 border-t border-warm-100">
+                        <li class="flex items-center gap-2"><span class="text-sage-700">✓</span> Coordination avec l'équipe soignante</li>
+                        <li class="flex items-center gap-2"><span class="text-sage-700">✓</span> Matériel 100% autonome et sécurisé</li>
+                        <li class="flex items-center gap-2"><span class="text-sage-700">✓</span> Devis & convention sur-mesure</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <!-- SECTION 3: LES MÉDIUMS THÉRAPEUTIQUES (Désamorcer la peur de créer) -->
+    <section id="mediums" class="py-20 bg-white border-y border-warm-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 text-teal-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                    Les outils de soin
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mb-4">
+                    Des matières variées pour 
+                    <span class="art-underline text-teal-800">
+                        réveiller vos sens.
+                    </span>
+                </h2>
+                <p class="text-base text-stone-600">
+                    Chaque matière possède ses propriétés thérapeutiques : certaines ancrent, d'autres libèrent ou apaisent.
+                </p>
+            </div>
 
-    <!-- Mentions Légales Modal -->
-    <div id="mentions-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0 duration-300">
-        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col relative transform scale-95 transition-transform duration-300" id="mentions-modal-content">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Argile & Modelage -->
+                <div class="bg-warm-50 rounded-2xl p-6 border border-warm-200 text-center flex flex-col items-center hover:translate-y-[-4px] transition-all duration-300 reveal">
+                    <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mb-4">
+                        🏺
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Argile & Modelage</h3>
+                    <p class="text-xs font-semibold text-teal-700 mb-2">Ancrage & Toucher</p>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Le contact direct de la terre permet de décharger les tensions nerveuses, de stimuler la motricité fine et de réancrer le corps dans l'instant présent.
+                    </p>
+                </div>
+
+                <!-- Collage intuitif -->
+                <div class="bg-warm-50 rounded-2xl p-6 border border-warm-200 text-center flex flex-col items-center hover:translate-y-[-4px] transition-all duration-300 reveal delay-100">
+                    <div class="w-16 h-16 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-2xl mb-4">
+                        ✂️
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Collage Intuitif</h3>
+                    <p class="text-xs font-semibold text-teal-700 mb-2">Sans peur de la page blanche</p>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        À partir d'images, textures et papiers déchirés, l'inconscient s'exprime librement et recompose une histoire sans exiger de compétence technique.
+                    </p>
+                </div>
+
+                <!-- Peinture & Pastels -->
+                <div class="bg-warm-50 rounded-2xl p-6 border border-warm-200 text-center flex flex-col items-center hover:translate-y-[-4px] transition-all duration-300 reveal delay-200">
+                    <div class="w-16 h-16 rounded-full bg-rose-100 text-rose-800 flex items-center justify-center text-2xl mb-4">
+                        🎨
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Peinture & Pastels</h3>
+                    <p class="text-xs font-semibold text-teal-700 mb-2">Émotion & Nuances</p>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Aquarelle fluide, gouache onctueuse, pastels gras ou secs : le jeu des couleurs et du mouvement libère les états d'âme trop denses.
+                    </p>
+                </div>
+
+                <!-- Mots & Écriture sensorielle -->
+                <div class="bg-warm-50 rounded-2xl p-6 border border-warm-200 text-center flex flex-col items-center hover:translate-y-[-4px] transition-all duration-300 reveal delay-300">
+                    <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-800 flex items-center justify-center text-2xl mb-4">
+                        📜
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-stone-900 mb-2">Écriture & Mots</h3>
+                    <p class="text-xs font-semibold text-teal-700 mb-2">Symbolisation & Sens</p>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Fragments poétiques, calligraphie libre ou associations de mots découpés pour relier l'imaginaire plastique à la parole consciente.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Banner reassurance -->
+            <div class="mt-12 bg-teal-50/80 rounded-2xl p-6 border border-teal-200/60 flex flex-col sm:flex-row items-center justify-between gap-6 reveal">
+                <div class="flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 rounded-full bg-teal-700 text-white flex items-center justify-center shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <div>
+                        <div class="font-serif font-bold text-stone-900 text-base">Vous venez sans aucun matériel</div>
+                        <div class="text-sm text-stone-600">J'apporte l'ensemble des matières, supports et protections adaptés lors de chaque séance.</div>
+                    </div>
+                </div>
+                <a href="#contact" class="shrink-0 px-6 py-2.5 bg-teal-700 text-white rounded-full font-semibold text-sm hover:bg-teal-800 transition">
+                    Me contacter
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: DÉROULEMENT D'UNE SÉANCE (Timeline en 3 temps) -->
+    <section id="deroulement" class="py-20 bg-warm-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 text-teal-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                    Le cadre de la séance
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mb-3">
+                    <span class="art-underline">
+                        Comment se déroule
+                    </span> une séance ?
+                </h2>
+                <p class="text-base text-stone-600">
+                    Une durée moyenne de 45 minutes à 1 heure, découpée en 3 moments clés.
+                </p>
+            </div>
+
+            <!-- Steps list -->
+            <div class="relative space-y-8 before:absolute before:inset-0 before:left-6 md:before:left-1/2 before:w-0.5 before:bg-warm-300 before:-z-0">
+                
+                <!-- Étape 1 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6 group reveal">
+                    <div class="md:w-1/2 md:text-right pr-0 md:pr-8 pl-14 md:pl-0">
+                        <span class="text-xs font-bold text-teal-700 uppercase tracking-wider">Étape 1 • ~10 minutes</span>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mt-1 mb-2">L'Accueil & la Météo Intérieure</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Un temps d'échange chaleureux pour poser ce qui est présent : fatigue, agitation, tristesse ou joie. Nous définissons ensemble l'intention et le besoin de la séance.
+                        </p>
+                    </div>
+                    <!-- Center Badge -->
+                    <div class="absolute left-0 md:left-1/2 -translate-x-0 md:-translate-x-1/2 w-12 h-12 rounded-full bg-teal-700 text-white font-bold text-lg flex items-center justify-center shadow-md border-4 border-warm-50 z-10">
+                        1
+                    </div>
+                    <div class="md:w-1/2 pl-14 md:pl-8">
+                        <div class="bg-white p-4 rounded-xl border border-warm-200 shadow-xs text-xs text-stone-500 italic">
+                            « Prendre le temps d'atterrir, de se sentir en sécurité et entendu. »
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6 group reveal delay-100">
+                    <div class="md:w-1/2 md:text-right pr-0 md:pr-8 pl-14 md:pl-0 order-1 md:order-1">
+                        <div class="bg-white p-4 rounded-xl border border-warm-200 shadow-xs text-xs text-stone-500 italic">
+                            « Aucun jugement esthétique. La liberté de tester, malaxer, déchirer ou peindre. »
+                        </div>
+                    </div>
+                    <!-- Center Badge -->
+                    <div class="absolute left-0 md:left-1/2 -translate-x-0 md:-translate-x-1/2 w-12 h-12 rounded-full bg-teal-700 text-white font-bold text-lg flex items-center justify-center shadow-md border-4 border-warm-50 z-10">
+                        2
+                    </div>
+                    <div class="md:w-1/2 pl-14 md:pl-8 order-2 md:order-2">
+                        <span class="text-xs font-bold text-teal-700 uppercase tracking-wider">Étape 2 • ~35 minutes</span>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mt-1 mb-2">L'Immersion Créative Guidée</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Je vous propose une consigne douce et ouverte avec le médium choisi (peinture, argile, collage). Vous créez à votre rythme, accompagné par ma présence bienveillante et contenante.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6 group reveal delay-200">
+                    <div class="md:w-1/2 md:text-right pr-0 md:pr-8 pl-14 md:pl-0">
+                        <span class="text-xs font-bold text-teal-700 uppercase tracking-wider">Étape 3 • ~15 minutes</span>
+                        <h3 class="text-xl font-serif font-bold text-stone-900 mt-1 mb-2">La Mise en Mots & l'Intégration</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Nous prenons du recul pour observer votre production. Vous y déposez vos ressentis, vos prises de conscience, et nous ancrons les bienfaits apaisants de la séance.
+                        </p>
+                    </div>
+                    <!-- Center Badge -->
+                    <div class="absolute left-0 md:left-1/2 -translate-x-0 md:-translate-x-1/2 w-12 h-12 rounded-full bg-teal-700 text-white font-bold text-lg flex items-center justify-center shadow-md border-4 border-warm-50 z-10">
+                        3
+                    </div>
+                    <div class="md:w-1/2 pl-14 md:pl-8">
+                        <div class="bg-white p-4 rounded-xl border border-warm-200 shadow-xs text-xs text-stone-500 italic">
+                            « Relier l'expérience vécue au quotidien pour transformer durablement les émotions. »
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: TARIFS & PRISE EN CHARGE MUTUELLE -->
+    <section id="tarifs" class="py-20 bg-white border-y border-warm-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 text-teal-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                    Transparence & Modalités
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mb-4">
+                    <span class="art-underline">
+                        Tarifs clairs
+                    </span> & prise en charge mutuelle
+                </h2>
+                <p class="text-base text-stone-600">
+                    Des formules adaptées avec déplacement et matériel systématiquement inclus sur Cap Atlantique.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Carte 1: Séance Particulier / Domicile -->
+                <div class="bg-warm-50 rounded-3xl p-8 border border-warm-200 flex flex-col justify-between hover:shadow-card transition-all reveal">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-teal-100 text-teal-800 text-xs font-bold rounded-full mb-4">
+                            Particuliers à Domicile
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-stone-900 mb-2">Séance Individuelle</h3>
+                        <p class="text-stone-600 text-xs mb-6">Pour seniors, adultes ou adolescents à votre domicile.</p>
+                        
+                        <div class="mb-6">
+                            <div class="text-3xl font-serif font-bold text-teal-800">Sur consultation</div>
+                            <div class="text-xs text-stone-500 mt-1">Séance complète de 45 min à 1h</div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-stone-600 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <span class="text-teal-700 font-bold">✓</span> Matériel artistique 100% fourni
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="text-teal-700 font-bold">✓</span> Déplacement inclus sur tout Cap Atlantique
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="text-teal-700 font-bold">✓</span> Facture fournie pour votre mutuelle
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="w-full text-center py-3 px-4 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-semibold text-sm transition">
+                        Prendre rendez-vous
+                    </a>
+                </div>
+
+                <!-- Carte 2: Établissements & Institutions -->
+                <div class="bg-warm-50 rounded-3xl p-8 border-2 border-teal-700/80 relative flex flex-col justify-between shadow-card reveal delay-100">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-teal-700 text-white text-xs font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-sm">
+                        EHPAD & Structures
+                    </div>
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-teal-100 text-teal-800 text-xs font-bold rounded-full mb-4 mt-2">
+                            EHPAD & Structures de Soin
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-stone-900 mb-2">Institutions & Groupes</h3>
+                        <p class="text-stone-600 text-xs mb-6">Ateliers thérapeutiques collectifs ou suivis individuels.</p>
+                        
+                        <div class="mb-6">
+                            <div class="text-3xl font-serif font-bold text-teal-800">Sur devis</div>
+                            <div class="text-xs text-stone-500 mt-1">Conventionnement & fréquence sur-mesure</div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-stone-600 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <span class="text-teal-700 font-bold">✓</span> Ateliers de groupe de 4 à 8 résidents
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="text-teal-700 font-bold">✓</span> Bilans d'objectifs & transmission soignante
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="text-teal-700 font-bold">✓</span> Adaptabilité aux personnes alitées
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="w-full text-center py-3 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-sm transition">
+                        Demander un devis institution
+                    </a>
+                </div>
+
+                <!-- Carte 3: Guide Prise en charge Mutuelles -->
+                <div class="bg-teal-50/70 rounded-3xl p-8 border border-teal-200 flex flex-col justify-between reveal delay-200">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-white text-teal-900 text-xs font-bold rounded-full mb-4 shadow-2xs">
+                            Remboursement
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-teal-950 mb-2">Prise en Charge Mutuelle</h3>
+                        <p class="text-stone-600 text-xs mb-6">Comment faire rembourser vos séances ?</p>
+                        
+                        <p class="text-sm text-stone-700 leading-relaxed mb-6">
+                            L'art-thérapie n'est pas remboursée par la Sécurité Sociale. En revanche, de plus en plus de mutuelles remboursent les séances au titre des <strong>forfaits Médecines Douces / Bien-être / Psychothérapie</strong> (souvent entre 3 et 5 séances par an).
+                        </p>
+
+                        <div class="p-4 bg-white/90 rounded-2xl border border-teal-100 mb-6">
+                            <div class="text-xs font-bold text-stone-900 mb-1">📄 Facture détaillée remise</div>
+                            <div class="text-xs text-stone-500">Comportant mon numéro SIRET et mon titre d'art-thérapeute certifiée RNCP.</div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="w-full text-center py-3 px-4 rounded-xl bg-teal-100 hover:bg-teal-200 text-teal-900 font-bold text-sm transition border border-teal-300">
+                        Vérifier avec ma mutuelle
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 6: ZONE D'INTERVENTION & DÉPLACEMENTS (Cap Atlantique & Presqu'île de Guérande) -->
+    <section class="py-16 bg-warm-100/70 border-b border-warm-200/60">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center reveal">
+            <div class="inline-flex items-center gap-2 text-teal-800 text-xs font-bold uppercase tracking-wider mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Zone de Déplacement
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-4">
+                Intervention sur toute la communauté <span class="art-underline text-teal-800">Cap Atlantique</span> & la Presqu'île
+            </h2>
+
+            <p class="text-stone-600 text-sm max-w-2xl mx-auto mb-8">
+                Je me déplace directement à votre domicile ou dans votre établissement (EHPAD, cliniques, résidences autonomie) sur <strong>l'ensemble des 15 communes de Cap Atlantique</strong> et l'agglomération de Saint-Nazaire :
+            </p>
+
+            <!-- Prominent Cap Atlantique Pill -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-teal-700 text-white text-xs sm:text-sm font-bold mb-6 shadow-sm">
+                <span>🌊</span> Territoire Cap Atlantique & Presqu'île de Guérande (Déplacement inclus)
+            </div>
+
+            <!-- Cities Badges (15 communes de Cap Atlantique + Saint-Nazaire) -->
+            <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto">
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Guérande</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 La Baule-Escoublac</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Pornichet</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Le Pouliguen</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Le Croisic</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Batz-sur-Mer</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Saint-Molf</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Mesquer-Quimiac</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Piriac-sur-Mer</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 La Turballe</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Saint-André-des-Eaux</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Herbignac</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Assérac</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Férel</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Pénestin</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-semibold text-stone-700 shadow-2xs border border-warm-200">📍 Saint-Nazaire</span>
+                <span class="bg-white px-4 py-2 rounded-full text-xs font-semibold text-stone-700 shadow-2xs border border-warm-200">📍 Pontchâteau</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: FAQ (ACCORDÉON ACCESSIBLE & FLUIDE) -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 text-teal-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                    Pour vous éclairer
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mb-3">
+                    Questions fréquentes
+                </h2>
+                <p class="text-stone-600 text-sm">
+                    Tout ce qu'il faut savoir avant de démarrer un accompagnement.
+                </p>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="space-y-4" id="faq-container">
+                
+                <!-- Q1 -->
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal">
+                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                        <span class="font-serif font-bold text-base sm:text-lg text-stone-900">Dois-je savoir dessiner ou être "créatif" ?</span>
+                        <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </button>
+                    <div class="faq-content text-stone-600 text-sm leading-relaxed">
+                        <strong>Absolument pas !</strong> L'art-thérapie clinique ne vise aucune création d'œuvre d'art et n'exige aucun talent particulier. C'est même souvent plus libérateur lorsque l'on abandonne toute attente esthétique pour se concentrer uniquement sur le ressenti et le plaisir de faire.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-100">
+                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                        <span class="font-serif font-bold text-base sm:text-lg text-stone-900">Comment se déroulent les séances à domicile sur Cap Atlantique ?</span>
+                        <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </button>
+                    <div class="faq-content text-stone-600 text-sm leading-relaxed">
+                        Je viens directement chez vous avec tout le matériel nécessaire (protections de table, argile, peintures sans odeur, pastels, papiers). Une simple table dans un endroit calme et lumineux suffit pour créer une bulle de soin intime et chaleureuse.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-200">
+                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                        <span class="font-serif font-bold text-base sm:text-lg text-stone-900">Combien de séances sont nécessaires ?</span>
+                        <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </button>
+                    <div class="faq-content text-stone-600 text-sm leading-relaxed">
+                        Il n'y a aucun engagement de durée. Un accompagnement peut être ponctuel (quelques séances pour surmonter une période difficile) ou s'inscrire dans la régularité (un suivi hebdomadaire ou bimensuel pour le maintien de l'autonomie et de la mémoire d'un senior). Nous faisons un point régulier sur vos ressentis.
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-300">
+                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                        <span class="font-serif font-bold text-base sm:text-lg text-stone-900">Quelle différence avec une psychothérapie verbale classique ?</span>
+                        <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </button>
+                    <div class="faq-content text-stone-600 text-sm leading-relaxed">
+                        En psychothérapie classique, la parole est le seul vecteur d'échange, ce qui peut être intimidant ou bloquant lorsque les traumatismes, la fatigue ou la maladie empêchent de s'exprimer. L'art-thérapie offre un support concret intermédiaire : l'émotion passe d'abord par la main et la matière avant d'être mise en mots, en toute sécurité.
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-400">
+                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                        <span class="font-serif font-bold text-base sm:text-lg text-stone-900">En quoi consiste l'appel découverte offert de 15 minutes ?</span>
+                        <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </button>
+                    <div class="faq-content text-stone-600 text-sm leading-relaxed">
+                        Cet échange téléphonique gratuit et sans aucun engagement vous permet de m'exposer votre situation, vos questions ou celles concernant un proche. C'est l'occasion de vérifier si mon approche correspond exactement à votre attente.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 8: CONTACT & PRISE DE RENDEZ-VOUS -->
+    <section id="contact" class="py-20 bg-teal-900 text-white relative overflow-hidden">
+        <!-- Ambient background lights -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-teal-700/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-teal-800/60 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-800/90 text-teal-200 text-xs font-semibold mb-3 border border-teal-700 shadow-xs">
+                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                    Prendre contact
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+                    Parlons de <span class="art-underline text-teal-100 italic">votre projet de soin.</span>
+                </h2>
+                <p class="text-teal-100/90 text-base">
+                    L'appel découverte est <strong>gratuit et sans engagement</strong> (15 min). Il permet simplement d'échanger en toute simplicité.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left: Direct Contact Cards -->
+                <div class="lg:col-span-5 space-y-4 reveal">
+                    
+                    <!-- Call Card -->
+                    <a href="tel:0677156910" class="block bg-teal-800/80 hover:bg-teal-800 border border-teal-700/80 hover:border-teal-500 p-6 rounded-2xl transition duration-300 group shadow-md">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-700 text-teal-100 flex items-center justify-center group-hover:scale-110 transition shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-xs uppercase tracking-wider text-teal-300 font-semibold">Par Téléphone</div>
+                                <div class="text-xl font-bold text-white">06 77 15 69 10</div>
+                                <div class="text-xs text-teal-200/80 mt-0.5">Du lundi au samedi • 9h - 19h</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Email Card -->
+                    <a href="mailto:alice@maurage.fr" class="block bg-teal-800/80 hover:bg-teal-800 border border-teal-700/80 hover:border-teal-500 p-6 rounded-2xl transition duration-300 group shadow-md">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-700 text-teal-100 flex items-center justify-center group-hover:scale-110 transition shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-xs uppercase tracking-wider text-teal-300 font-semibold">Par Email</div>
+                                <div class="text-lg font-bold text-white">alice@maurage.fr</div>
+                                <div class="text-xs text-teal-200/80 mt-0.5">Réponse sous 24h ouvrées</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Location info -->
+                    <div class="bg-teal-800/40 border border-teal-700/40 p-6 rounded-2xl">
+                        <div class="flex items-start gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="text-teal-300 shrink-0 mt-0.5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <div class="text-xs text-teal-100 leading-relaxed">
+                                <strong class="text-white">Zone d'intervention :</strong> Communauté d'agglomération Cap Atlantique (Guérande, La Baule, Pornichet, Le Croisic, Le Pouliguen, Saint-Molf, Mesquer, Piriac, La Turballe, Herbignac, Assérac, Férel, Pénestin...) et agglomération de Saint-Nazaire.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Quick Contact Form -->
+                <div class="lg:col-span-7 bg-white text-stone-800 rounded-3xl p-7 sm:p-9 shadow-2xl reveal delay-100">
+                    <h3 class="text-2xl font-serif font-bold text-stone-900 mb-1">Envoyer un message</h3>
+                    <p class="text-xs text-stone-500 mb-6">Remplissez ce formulaire court pour être recontacté(e) rapidement.</p>
+
+                    <form id="contact-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="form-name" class="block text-xs font-bold text-stone-700 uppercase mb-1">Votre Nom & Prénom *</label>
+                                <input type="text" id="form-name" required placeholder="Ex: Marie Dupont" class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="form-phone" class="block text-xs font-bold text-stone-700 uppercase mb-1">Téléphone *</label>
+                                <input type="tel" id="form-phone" required placeholder="06 00 00 00 00" class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="form-email" class="block text-xs font-bold text-stone-700 uppercase mb-1">Email</label>
+                                <input type="email" id="form-email" placeholder="marie@exemple.fr" class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="form-subject" class="block text-xs font-bold text-stone-700 uppercase mb-1">Vous êtes / Vous cherchez *</label>
+                                <select id="form-subject" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent bg-white">
+                                    <option value="Senior / Aidant">Accompagnement Senior / Aidant</option>
+                                    <option value="Adulte / Burnout">Adulte (Stress, Émotions, Deuil)</option>
+                                    <option value="Enfant / Adolescent">Enfant ou Adolescent</option>
+                                    <option value="Institution / EHPAD">Institution, EHPAD ou Structure</option>
+                                    <option value="Autre demande">Autre question</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="form-message" class="block text-xs font-bold text-stone-700 uppercase mb-1">Votre Message ou commune sur Cap Atlantique (facultatif)</label>
+                            <textarea id="form-message" rows="3" placeholder="Indiquez votre commune et votre besoin pour préparer au mieux notre échange..." class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
+                        </div>
+
+                        <button type="submit" id="form-submit-btn" class="w-full py-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl font-bold text-sm transition shadow-md flex items-center justify-center gap-2">
+                            <span>Demander mon appel découverte gratuit</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+
+                        <div id="form-feedback" class="hidden p-3 rounded-xl bg-teal-50 border border-teal-200 text-teal-800 text-xs text-center font-medium">
+                            Merci ! Votre message a bien été pris en compte. Je vous recontacte sous 24h.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 py-12 text-sm border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <!-- Left Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-teal-700 text-white flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-white">Alice Maurage</span> • Art-Thérapeute Clinique certifiée RNCP • Cap Atlantique
+                    </div>
+                </div>
+
+                <!-- Middle Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-xs text-stone-400">
+                    <a href="#approche" class="hover:text-white transition">L'Approche</a>
+                    <a href="#pourqui" class="hover:text-white transition">Pour qui</a>
+                    <a href="#mediums" class="hover:text-white transition">Médiums</a>
+                    <a href="#tarifs" class="hover:text-white transition">Tarifs</a>
+                    <a href="#faq" class="hover:text-white transition">FAQ</a>
+                    <button id="open-mentions-btn" class="hover:text-teal-300 underline underline-offset-4 decoration-stone-600 transition">Mentions Légales</button>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-xs text-stone-500 text-center md:text-right">
+                    &copy; 2026 Alice Maurage • Guérande & Cap Atlantique
+                </div>
+
+            </div>
+
+            <!-- Disclaimer note -->
+            <div class="mt-8 pt-6 border-t border-stone-800/60 text-center text-xs text-stone-500 max-w-3xl mx-auto">
+                L'art-thérapie est une démarche d'accompagnement thérapeutique et de bien-être. Elle ne se substitue en aucun cas à un diagnostic médical ni à un traitement prescrit par un médecin ou psychiatre.
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY BOTTOM BAR (Mobile Only for instant conversion) -->
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-stone-200 p-3 flex gap-2 shadow-lg">
+        <a href="tel:0677156910" class="flex-1 bg-warm-100 text-stone-800 font-bold py-2.5 px-3 rounded-xl text-center text-xs flex items-center justify-center gap-1.5 border border-stone-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Appeler
+        </a>
+        <a href="#contact" class="flex-1 bg-teal-700 text-white font-bold py-2.5 px-3 rounded-xl text-center text-xs flex items-center justify-center gap-1.5 shadow-sm">
+            <span>Prendre RDV</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+    </div>
+
+    <!-- MENTIONS LÉGALES MODAL -->
+    <div id="mentions-modal" class="fixed inset-0 bg-stone-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0 duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[85vh] flex flex-col relative transform scale-95 transition-transform duration-300" id="mentions-modal-content">
+            
             <!-- Header -->
             <div class="flex items-center justify-between p-6 border-b border-stone-100">
-                <h2 class="text-2xl font-serif font-bold text-stone-800">Mentions Légales</h2>
-                <button id="close-mentions-btn" class="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors" aria-label="Fermer">
+                <h2 id="modal-title" class="text-2xl font-serif font-bold text-stone-900">Mentions Légales</h2>
+                <button id="close-mentions-btn" class="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors" aria-label="Fermer la boîte de dialogue">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -356,249 +1148,295 @@
             <div class="p-6 overflow-y-auto text-sm text-stone-600 space-y-6">
 
                 <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Éditeur du site</h3>
-                    <p>Le site internet maurage.fr est édité par :</p>
-                    <p>Identité : Madame Maurage Alice, Entrepreneur Individuel (EI).</p>
-                    <p>SIRET : 102 086 295 00015.</p>
-                    <p>Siège social : 3 allée des tilleuls 44350 saint molf.</p>
-                    <p>Directeur de la publication : Madame Maurage Alice.</p>
-                    <p>Contact : alice@maurage.fr | 06 77 15 69 10</p>
+                    <h3 class="font-bold text-stone-900 mb-1">1. Éditeur du site</h3>
+                    <p>Le site internet <strong>maurage.fr</strong> est édité par :</p>
+                    <p class="mt-1">Identité : <strong>Madame Maurage Alice</strong>, Entrepreneur Individuel (EI).</p>
+                    <p>SIRET : 102 086 295 00015</p>
+                    <p>Siège social : 3 allée des tilleuls, 44350 Saint-Molf, France</p>
+                    <p>Directrice de la publication : Madame Maurage Alice</p>
+                    <p>Contact : <a href="mailto:alice@maurage.fr" class="text-teal-700 underline">alice@maurage.fr</a> | <a href="tel:0677156910" class="text-teal-700 underline">06 77 15 69 10</a></p>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Hébergement du site</h3>
-                    <p>Le site est hébergé par Mr MATHIEU Eliott<br>59 rue du grand verger 54000 Nancy France<br>eliott.mathieu.pro@gmail.com<br>+33763463096</p>
+                    <h3 class="font-bold text-stone-900 mb-1">2. Hébergement du site</h3>
+                    <p>Le site est hébergé par :</p>
+                    <p>Mr MATHIEU Eliott<br>59 rue du grand verger, 54000 Nancy, France<br>Email : eliott.mathieu.pro@gmail.com | Téléphone : +33 7 63 46 30 96</p>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Activité et Réglementation</h3>
-                    <p>Art-thérapeute.</p>
+                    <h3 class="font-bold text-stone-900 mb-1">3. Activité et Réglementation</h3>
+                    <p>Activité : Art-thérapeute clinique certifiée.</p>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Médiation de la consommation</h3>
+                    <h3 class="font-bold text-stone-900 mb-1">4. Médiation de la consommation</h3>
                     <p>Conformément aux articles L.612-1 et suivants du Code de la consommation, en cas de litige non résolu avec le prestataire, le Client peut recourir gratuitement au médiateur de la consommation suivant :</p>
-                    <p>Organisme : CNPM - MÉDIATION - CONSOMMATION<br>Adresse : 27, avenue de la Libération – 42400 SAINT-CHAMOND<br>Site web : <a href="https://www.cnpm-mediation-consommation.eu" class="text-teal-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.cnpm-mediation-consommation.eu</a></p>
+                    <p class="mt-1">Organisme : CNPM - MÉDIATION - CONSOMMATION<br>Adresse : 27, avenue de la Libération – 42400 SAINT-CHAMOND<br>Site web : <a href="https://www.cnpm-mediation-consommation.eu" class="text-teal-700 hover:underline" target="_blank" rel="noopener noreferrer">https://www.cnpm-mediation-consommation.eu</a></p>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Propriété intellectuelle</h3>
-                    <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques. La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
+                    <h3 class="font-bold text-stone-900 mb-1">5. Propriété intellectuelle</h3>
+                    <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les représentations photographiques et iconographiques. La reproduction de tout ou partie de ce site sans autorisation expresse est strictement interdite.</p>
                 </div>
 
-                <div>
-                    <h3 class="font-bold text-stone-800 mb-2">Avertissement Médical (Clause de non-substitution)</h3>
-                    <p>Les prestations proposées par Madame Maurage Alice ne sont pas des actes médicaux. Elles s'inscrivent dans une démarche de bien-être et d'hygiène de vie. Elles ne remplacent en aucun cas une consultation médicale, un diagnostic ou un traitement prescrit par un professionnel de santé (médecin, psychiatre, pédiatre). Madame Maurage Alice ne demande jamais l'arrêt ou la modification d'un traitement médical en cours.</p>
+                <div class="p-4 bg-teal-50 rounded-xl border border-teal-200">
+                    <h3 class="font-bold text-teal-900 mb-1">6. Avertissement Médical (Clause de non-substitution)</h3>
+                    <p class="text-xs text-teal-900/90 leading-relaxed">
+                        Les prestations proposées par Madame Maurage Alice s'inscrivent dans une démarche de soin relationnel, d'art-thérapie et de mieux-être. Elles ne remplacent en aucun cas une consultation médicale, un diagnostic ou un traitement prescrit par un professionnel de santé (médecin généraliste, psychiatre, pédiatre). Madame Maurage Alice ne préconise jamais l'arrêt ou la modification d'un traitement médical en cours.
+                    </p>
                 </div>
 
             </div>
         </div>
     </div>
 
-
-    <!-- Footer -->
-    <footer class="bg-stone-900 text-stone-500 py-8 text-center text-sm">
-        <p>&copy; 2026 Alice Maurage - Guérande • <button id="open-mentions-btn" class="hover:text-stone-300 underline underline-offset-4 decoration-stone-600 hover:decoration-stone-300 transition-colors">Mentions Légales</button></p>
-    </footer>
-
+    <!-- SCRIPTS -->
     <script>
+        // =========================================================================
+        // 1. DYNAMIC HAND-DRAWN BRUSH WAVE GENERATOR (Accurate SVG Path & Length)
+        // =========================================================================
+        function initArtisticUnderlines() {
+            const underlineNodes = document.querySelectorAll('.art-underline');
 
-        // Mobile Menu
-        const btn = document.getElementById('mobile-btn');
-        const menu = document.getElementById('mobile-menu');
-        const links = document.querySelectorAll('.mobile-link');
-        
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        });
+            underlineNodes.forEach((container, index) => {
+                // Ensure proper styling for container
+                container.style.position = 'relative';
+                container.style.display = 'inline-block';
+                container.style.zIndex = '1';
 
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
+                // Check section background type:
+                // For light background: gentle translucent teal (#0f766e, opacity 0.22)
+                // For dark background (#contact): gentle luminous soft aqua (#5eead4, opacity 0.3)
+                const isDark = container.closest('#contact') !== null;
+                const strokeColor = isDark ? '#5eead4' : '#0f766e';
+                const strokeOpacity = isDark ? 0.30 : 0.22;
+
+                // Create full-width stretching SVG
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.setAttribute('viewBox', "0 0 600 50");
+                svg.setAttribute('preserveAspectRatio', 'none');
+                svg.style.position = 'absolute';
+                svg.style.bottom = '-8px';
+                svg.style.left = '0';
+                svg.style.width = '100%';
+                svg.style.height = '26px';
+                svg.style.pointerEvents = 'none';
+                svg.style.overflow = 'visible';
+                svg.style.zIndex = '-1';
+                svg.style.opacity = '0';
+                svg.style.transition = 'opacity 0.4s ease';
+
+                // Create organic hand-drawn fluid wave path (generous watercolor wash)
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute('d', 'M 6 32 C 150 14, 300 38, 450 18 C 520 10, 565 28, 594 22');
+                path.setAttribute('fill', 'none');
+                path.setAttribute('stroke', strokeColor);
+                path.setAttribute('stroke-width', '18');
+                path.setAttribute('stroke-linecap', 'round');
+                path.setAttribute('stroke-linejoin', 'round');
+
+                svg.appendChild(path);
+                container.appendChild(svg);
+
+                // Compute exact mathematical path length so it's a solid single continuous line
+                const totalLength = path.getTotalLength() || 650;
+                path.style.strokeDasharray = `${totalLength} ${totalLength}`;
+                path.style.strokeDashoffset = `${totalLength}`;
+
+                // Smooth Animation Function
+                let animated = false;
+                const triggerDraw = () => {
+                    if (animated) return;
+                    animated = true;
+                    svg.style.opacity = strokeOpacity.toString();
+                    path.style.transition = 'stroke-dashoffset 1.35s cubic-bezier(0.35, 0.05, 0.2, 1)';
+                    path.style.strokeDashoffset = '0';
+                };
+
+                // Scroll Trigger: Trigger exactly when scrolled into view
+                if (index === 0) {
+                    // Hero Title: trigger shortly after page load
+                    setTimeout(triggerDraw, 350);
+                } else {
+                    const scrollObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                setTimeout(triggerDraw, 120);
+                                scrollObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        threshold: 0.35,
+                        rootMargin: '0px 0px -40px 0px'
+                    });
+
+                    scrollObserver.observe(container);
+                }
             });
-        });
+        }
 
-        // Animation au scroll
-        const observer = new IntersectionObserver((entries) => {
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initArtisticUnderlines);
+        } else {
+            initArtisticUnderlines();
+        }
+
+        // =========================================================================
+        // 2. REVEAL ANIMATIONS ON SCROLL
+        // =========================================================================
+        const revealObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.1 });
+        }, revealObserverOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        
-        // AnimatedTitle Logic (Staggered Letters)
-        class AnimatedTitle {
-            constructor(containerId, line1, line2 = "", options = {}) {
-                this.container = document.getElementById(containerId);
-                if (!this.container) return;
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-                this.line1 = line1;
-                this.line2 = line2;
-                this.options = options;
-                
-                this.render();
-                this.initObserver();
-            }
+        // =========================================================================
+        // 3. MOBILE MENU
+        // =========================================================================
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-            render() {
-                this.container.innerHTML = '';
-                this.container.classList.add('animated-text-container'); // For structural CSS
-                
-                // Append Line 1
-                const div1 = document.createElement('div');
-                div1.className = 'animated-text-main text-center';
-                if(this.options.fontSizeMain) div1.style.fontSize = this.options.fontSizeMain.toString().includes('rem') || this.options.fontSizeMain.toString().includes('vw') || this.options.fontSizeMain.toString().includes('clamp') ? this.options.fontSizeMain : this.options.fontSizeMain + 'px';
-                div1.innerHTML = this.line1; // Allow HTML if needed, or textContent
-                this.container.appendChild(div1);
-
-                // Append Line 2 if exists
-                if (this.line2) {
-                    const div2 = document.createElement('div');
-                    div2.className = 'animated-text-accent text-center';
-                     if(this.options.fontSizeAccent) div2.style.fontSize = this.options.fontSizeAccent.toString().includes('rem') || this.options.fontSizeAccent.toString().includes('vw') || this.options.fontSizeAccent.toString().includes('clamp') ? this.options.fontSizeAccent : this.options.fontSizeAccent + 'px';
-                    div2.innerHTML = this.line2;
-                    this.container.appendChild(div2);
-                }
-
-                // Append SVG Brush Stroke
-                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                svg.setAttribute('viewBox', "0 0 800 100"); // Much flatter viewbox
-                svg.classList.add('brush-stroke');
-                
-                // Generate random wave path
-                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                path.setAttribute('d', this.generateWavePath());
-                path.setAttribute('fill', 'none');
-                path.setAttribute('stroke', '#0d9488');
-                path.setAttribute('stroke-width', '8');
-                path.setAttribute('stroke-linecap', 'round');
-                
-                svg.appendChild(path);
-                this.container.appendChild(svg);
-            }
-
-            generateWavePath() {
-                 // Randomize start, middle, and end points slightly
-                 const startX = 40 + Math.random() * 20;
-                 const startY = 50 + (Math.random() * 10 - 5);
-                 
-                 const midX = 380 + (Math.random() * 40 - 20);
-                 const midY = 50 + (Math.random() * 10 - 5);
-                 
-                 const endX = 740 + (Math.random() * 20 - 10);
-                 const endY = 50 + (Math.random() * 10 - 5);
-                 
-                 // Control point for the first curve (Q) - determines the "arch" height
-                 // Random height between 0 and 30 (y-coordinate)
-                 const cp1x = (startX + midX) / 2 + (Math.random() * 40 - 20);
-                 const cp1y = 10 + Math.random() * 25; 
-                 
-                 // The 'T' command automatically infers the second control point to be smooth
-                 
-                 return `M ${startX} ${startY} Q ${cp1x} ${cp1y}, ${midX} ${midY} T ${endX} ${endY}`;
-            }
-
-            initObserver() {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            this.container.classList.add('active'); // CSS matches .active .animated-letter
-                            observer.disconnect(); 
-                        }
-                    });
-                }, { threshold: 0.4 });
-
-                observer.observe(this.container);
+        function toggleMobileMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+                mobileBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+                mobileBtn.setAttribute('aria-expanded', 'false');
             }
         }
 
-        // Initialize All Titles
-        document.addEventListener('DOMContentLoaded', () => {
-            // Hero
-            new AnimatedTitle('hero-title-container', 'Art-Thérapeute', 'Clinique', { fontSizeMain: 'clamp(2.5rem, 8vw, 3.5rem)', fontSizeAccent: 'clamp(3rem, 10vw, 4rem)' });
-            
-            // Apropos
-            new AnimatedTitle('title-apropos', "Plus qu'une passion,", "une expertise.", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', toggleMobileMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                    mobileBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
 
-            // Pour Qui
-            new AnimatedTitle('title-pourqui', "Une réponse adaptée", "à vos besoins", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
+        // =========================================================================
+        // 4. FAQ ACCORDION
+        // =========================================================================
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('open');
+                        const btn = otherItem.querySelector('button');
+                        if (btn) btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
 
-            // Deroulement
-            new AnimatedTitle('title-deroulement', "Comment se déroule", "une séance ?", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
-
-            // FAQ
-            new AnimatedTitle('title-faq', "Questions", "fréquentes", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
-
-            // Contact
-            new AnimatedTitle('title-contact', "Parlons de", "votre projet", { fontSizeMain: 'clamp(1.8rem, 6vw, 3rem)', fontSizeAccent: 'clamp(2.2rem, 8vw, 3.5rem)' });
-            
-            // Contact color override
-            const contactContainer = document.getElementById('title-contact');
-            if(contactContainer) {
-                 const style = document.createElement('style');
-                 // Target specific letters in this container
-                 // Target specific letters in this container
-                 style.textContent = `#title-contact .animated-text-main, #title-contact .animated-text-accent { color: #f0fdfa !important; } #title-contact path { stroke: #ccfbf1 !important; opacity: 0.3; }`;
-                 contactContainer.appendChild(style);
-            }
+                if (isOpen) {
+                    item.classList.remove('open');
+                    const btn = item.querySelector('button');
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
+                } else {
+                    item.classList.add('open');
+                    const btn = item.querySelector('button');
+                    if (btn) btn.setAttribute('aria-expanded', 'true');
+                }
+            });
         });
 
-
-        // Mentions Légales Modal Logic
+        // =========================================================================
+        // 5. MENTIONS LÉGALES MODAL
+        // =========================================================================
         const mentionsModal = document.getElementById('mentions-modal');
         const openMentionsBtn = document.getElementById('open-mentions-btn');
         const closeMentionsBtn = document.getElementById('close-mentions-btn');
         const mentionsModalContent = document.getElementById('mentions-modal-content');
 
         function openModal() {
+            if (!mentionsModal) return;
             mentionsModal.classList.remove('hidden');
-            // Force reflow
             void mentionsModal.offsetWidth;
             mentionsModal.classList.remove('opacity-0');
             mentionsModalContent.classList.remove('scale-95');
             mentionsModalContent.classList.add('scale-100');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
+            if (!mentionsModal) return;
             mentionsModal.classList.add('opacity-0');
             mentionsModalContent.classList.remove('scale-100');
             mentionsModalContent.classList.add('scale-95');
 
-            // Wait for transition to finish
             setTimeout(() => {
                 mentionsModal.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore background scrolling
+                document.body.style.overflow = '';
             }, 300);
         }
 
-        if (openMentionsBtn && mentionsModal && closeMentionsBtn) {
-            openMentionsBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal();
-            });
-
-            closeMentionsBtn.addEventListener('click', closeModal);
-
-            // Close when clicking outside
+        if (openMentionsBtn) openMentionsBtn.addEventListener('click', openModal);
+        if (closeMentionsBtn) closeMentionsBtn.addEventListener('click', closeModal);
+        if (mentionsModal) {
             mentionsModal.addEventListener('click', (e) => {
-                if (e.target === mentionsModal) {
-                    closeModal();
-                }
-            });
-
-            // Close on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !mentionsModal.classList.contains('hidden')) {
-                    closeModal();
-                }
+                if (e.target === mentionsModal) closeModal();
             });
         }
-</script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mentionsModal && !mentionsModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // =========================================================================
+        // 6. CONTACT FORM
+        // =========================================================================
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('form-submit-btn');
+            const feedback = document.getElementById('form-feedback');
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const email = document.getElementById('form-email').value;
+            const subject = document.getElementById('form-subject').value;
+            const message = document.getElementById('form-message').value;
+
+            // Visual feedback
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span>Envoi en cours...</span>`;
+
+            setTimeout(() => {
+                submitBtn.classList.add('hidden');
+                feedback.classList.remove('hidden');
+
+                // Mailto fallback
+                const mailtoUrl = `mailto:alice@maurage.fr?subject=${encodeURIComponent('Demande RDV (Cap Atlantique) - ' + subject + ' - ' + name)}&body=${encodeURIComponent('Nom: ' + name + '\nTéléphone: ' + phone + '\nEmail: ' + email + '\nSujet: ' + subject + '\n\nMessage:\n' + message)}`;
+                
+                window.location.href = mailtoUrl;
+            }, 800);
+        }
+    </script>
 </body>
 </html>
