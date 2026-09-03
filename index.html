@@ -176,167 +176,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    'xs': '400px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                },
-                fontFamily: {
-                    sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-                    serif: ['"Fraunces"', 'Georgia', 'serif'],
-                },
-                extend: {
-                    fontSize: {
-                        'fluid-hero': 'clamp(2.15rem, 1.6rem + 2.4vw, 3.6rem)',
-                        'fluid-h2': 'clamp(1.75rem, 1.35rem + 1.6vw, 2.5rem)',
-                        'fluid-h3': 'clamp(1.18rem, 1.05rem + 0.6vw, 1.5rem)',
-                        'fluid-lead': 'clamp(1.05rem, 0.96rem + 0.38vw, 1.25rem)',
-                        'fluid-body': 'clamp(0.975rem, 0.92rem + 0.25vw, 1.0625rem)',
-                        'fluid-sm': 'clamp(0.85rem, 0.8rem + 0.2vw, 0.925rem)',
-                        'fluid-xs': 'clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem)',
-                    },
-                    colors: {
-                        sage: {
-                            50: '#f4f7f5',
-                            100: '#e5ece7',
-                            200: '#ceddd2',
-                            300: '#abc4b3',
-                            400: '#83a58e',
-                            500: '#648870',
-                            600: '#4e6d57',
-                            700: '#3f5646',
-                            800: '#34463a',
-                            900: '#2c3a31',
-                        },
-                        teal: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
-                        },
-                        warm: {
-                            50: '#faf8f5',
-                            100: '#f5f0e8',
-                            200: '#eae0d2',
-                            300: '#dccab3',
-                            400: '#cbb092',
-                            500: '#bd9a77',
-                            600: '#ad8464',
-                            700: '#906b52',
-                            800: '#755745',
-                            900: '#60483a',
-                        },
-                        terracotta: {
-                            50: '#fdf6f2',
-                            100: '#faece4',
-                            500: '#d97745',
-                            600: '#c55f2c',
-                            700: '#a3481e',
-                        },
-                        stone: {
-                            50: '#fafaf9',
-                            100: '#f5f5f4',
-                            200: '#e7e5e4',
-                            300: '#d6d3d1',
-                            400: '#a8a29e',
-                            500: '#78716c',
-                            600: '#57534e',
-                            700: '#44403c',
-                            800: '#292524',
-                            900: '#1c1917',
-                        }
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 30px -5px rgba(15, 118, 110, 0.07)',
-                        'card': '0 4px 20px -2px rgba(44, 58, 49, 0.05)',
-                        'hover': '0 20px 35px -5px rgba(15, 118, 110, 0.12)',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Smooth Scroll, Viewport Adjustments & Fluid Base */
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        body {
-            font-size: clamp(1rem, 0.95rem + 0.22vw, 1.0625rem);
-            line-height: 1.65;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered Delay Utilities */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-
-        /* Artistic Brush Underline Container */
-        .art-underline {
-            position: relative;
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        /* FAQ Accordion Transitions */
-        .faq-content {
-            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, padding 0.3s ease;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-        }
-        .faq-item.open .faq-content {
-            max-height: 400px;
-            opacity: 1;
-            padding-top: 0.75rem;
-            padding-bottom: 0.5rem;
-        }
-        .faq-item.open .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Floating animation for badge */
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-float {
-            animation: floatSlow 4s ease-in-out infinite;
-        }
-
-        /* Background Pattern */
-        .pattern-dots {
-            background-image: radial-gradient(rgba(15, 118, 110, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-    </style>
+    <!-- Precompiled Production CSS (Tailwind + Design System - 0 Render-Blocking JS) -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="font-sans text-stone-700 bg-warm-50 selection:bg-teal-100 selection:text-teal-900 overflow-x-hidden antialiased">
 
@@ -345,7 +186,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
                 <!-- Brand / Logo -->
-                <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-1" aria-label="Accueil Alice Maurage">
+                <a href="./index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-1" aria-label="Accueil Alice Maurage">
                     <div class="w-10 h-10 rounded-full bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="13.5" cy="6.5" r=".5"/>
@@ -357,18 +198,18 @@
                     </div>
                     <div>
                         <span class="block text-lg font-serif font-bold text-stone-800 tracking-tight group-hover:text-teal-800 transition-colors">Alice Maurage</span>
-                        <span class="block text-xs uppercase tracking-wider font-semibold text-teal-700">Art-Thérapeute Clinique</span>
+                        <span class="block text-xs uppercase tracking-wider font-semibold text-teal-700">Art-Thérapie Clinique</span>
                     </div>
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex space-x-7 items-center">
-                    <a href="#approche" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">L'Approche</a>
-                    <a href="#pourqui" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Pour qui</a>
-                    <a href="#mediums" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Les Médiums</a>
-                    <a href="#deroulement" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Déroulement</a>
-                    <a href="#tarifs" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Tarifs & Mutuelle</a>
-                    <a href="#faq" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">FAQ</a>
+                <div class="hidden lg:flex space-x-6 items-center">
+                    <a href="./index.html#approche" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">L'Approche</a>
+                    <a href="./index.html#pourqui" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Pour qui</a>
+                    <a href="./la-baule-pornichet.html" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">La Baule & Pornichet</a>
+                    <a href="./ehpad-institutions.html" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">EHPAD & Structures</a>
+                    <a href="./index.html#tarifs" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">Tarifs</a>
+                    <a href="./index.html#faq" class="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors">FAQ</a>
                     <a href="#contact" class="inline-flex items-center gap-2 bg-teal-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-teal-800 transition shadow-sm hover:shadow-md hover:-translate-y-0.5">
                         <span>Prendre RDV</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -385,12 +226,13 @@
 
         <!-- Mobile Menu Drawer -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-lg border-b border-warm-200 absolute w-full left-0 top-full px-6 py-6 shadow-xl flex-col gap-4">
-            <a href="#approche" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">L'Approche</a>
-            <a href="#pourqui" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Pour qui</a>
-            <a href="#mediums" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Les Médiums</a>
-            <a href="#deroulement" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Déroulement d'une séance</a>
-            <a href="#tarifs" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Tarifs & Prise en charge</a>
-            <a href="#faq" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Questions fréquentes</a>
+            <a href="./index.html#approche" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">L'Approche</a>
+            <a href="./index.html#pourqui" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Pour qui</a>
+            <a href="./la-baule-pornichet.html" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">📍 La Baule & Pornichet (Domicile)</a>
+            <a href="./ehpad-institutions.html" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">🏥 EHPAD & Structures de soin</a>
+            <a href="./index.html#deroulement" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Déroulement d'une séance</a>
+            <a href="./index.html#tarifs" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Tarifs & Prise en charge</a>
+            <a href="./index.html#faq" class="block text-base font-medium text-stone-700 hover:text-teal-700 mobile-link py-1">Questions fréquentes</a>
             <div class="pt-4 border-t border-stone-100 flex flex-col gap-3">
                 <a href="#contact" class="w-full text-center bg-teal-700 text-white py-3 rounded-xl font-bold mobile-link shadow-md">Prendre Rendez-vous</a>
                 <a href="tel:0677156910" class="w-full text-center bg-stone-100 text-stone-800 py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
@@ -482,7 +324,10 @@
                         <!-- Image Container with warm border -->
                         <div class="relative bg-white p-3 rounded-3xl shadow-card border border-warm-200 overflow-hidden">
                             <div class="relative h-[380px] sm:h-[420px] rounded-2xl overflow-hidden bg-stone-100">
-                                <img src="./aliceMaurage.jpg" alt="Alice Maurage, Art-Thérapeute à Guérande et Cap Atlantique" width="500" height="500" fetchpriority="high" class="w-full h-full object-cover object-top hover:scale-102 transition-transform duration-700">
+                                <picture>
+                                    <source srcset="./aliceMaurage.webp" type="image/webp">
+                                    <img src="./aliceMaurage.jpg" alt="Alice Maurage, Art-Thérapeute à Guérande et Cap Atlantique" width="500" height="500" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-top hover:scale-102 transition-transform duration-700">
+                                </picture>
                                 <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent"></div>
                                 
                                 <!-- Inner Overlay Label -->
@@ -645,6 +490,10 @@
                         <li class="flex items-center gap-2"><span class="text-teal-600">✓</span> Reconnexion aux souvenirs de vie</li>
                         <li class="flex items-center gap-2"><span class="text-teal-600">✓</span> Soulagement des aidants familiaux</li>
                     </ul>
+                    <a href="./la-baule-pornichet.html" class="mt-4 pt-3 border-t border-warm-100/60 inline-flex items-center gap-1.5 text-fluid-xs font-bold text-teal-800 hover:text-teal-900 group">
+                        <span>Séances à domicile La Baule & Pornichet</span>
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
                 </div>
 
                 <!-- 2. Adultes & Actifs -->
@@ -702,6 +551,11 @@
                         <li class="flex items-center gap-2"><span class="text-sage-700">✓</span> Matériel 100% autonome et sécurisé</li>
                         <li class="flex items-center gap-2"><span class="text-sage-700">✓</span> Devis & convention sur-mesure</li>
                     </ul>
+                    <a href="./ehpad-institutions.html" class="mt-4 pt-3 border-t border-warm-100/60 inline-flex items-center gap-1.5 text-fluid-xs font-bold text-teal-800 hover:text-teal-900 group">
+                        <span>Découvrir l'offre EHPAD & Institutions</span>
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
                 </div>
 
             </div>
@@ -969,8 +823,8 @@
                         </ul>
                     </div>
 
-                    <a href="#contact" class="w-full text-center py-3 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-fluid-sm transition">
-                        Demander un devis institution
+                    <a href="./ehpad-institutions.html" class="w-full text-center py-3 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-fluid-sm transition">
+                        Consulter l'offre & devis institution
                     </a>
                 </div>
 
@@ -1027,9 +881,9 @@
             <!-- Cities Badges (15 communes de Cap Atlantique + Saint-Nazaire) -->
             <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto">
                 <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Guérande</span>
-                <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 La Baule-Escoublac</span>
-                <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Pornichet</span>
-                <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Le Pouliguen</span>
+                <a href="./la-baule-pornichet.html" class="bg-teal-50 hover:bg-teal-100 px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-300 transition-colors">📍 La Baule-Escoublac ↗</a>
+                <a href="./la-baule-pornichet.html" class="bg-teal-50 hover:bg-teal-100 px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-300 transition-colors">📍 Pornichet ↗</a>
+                <a href="./la-baule-pornichet.html" class="bg-teal-50 hover:bg-teal-100 px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-300 transition-colors">📍 Le Pouliguen ↗</a>
                 <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Le Croisic</span>
                 <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Batz-sur-Mer</span>
                 <span class="bg-white px-4 py-2 rounded-full text-fluid-xs font-bold text-teal-900 shadow-2xs border border-teal-200">📍 Saint-Molf</span>
@@ -1068,66 +922,66 @@
             <div class="space-y-4" id="faq-container">
                 
                 <!-- Q1 -->
-                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal">
-                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all reveal">
+                    <button id="faq-btn-1" class="faq-btn w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 rounded-lg cursor-pointer" aria-expanded="false" aria-controls="faq-answer-1">
                         <span class="font-serif font-bold text-fluid-h3 text-stone-900">Dois-je savoir dessiner ou être "créatif" ?</span>
                         <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                     </button>
-                    <div class="faq-content text-stone-600 text-fluid-sm leading-relaxed">
+                    <div id="faq-answer-1" class="faq-content text-stone-600 text-fluid-sm leading-relaxed" role="region" aria-labelledby="faq-btn-1">
                         <strong>Absolument pas !</strong> L'art-thérapie clinique ne vise aucune création d'œuvre d'art et n'exige aucun talent particulier. C'est même souvent plus libérateur lorsque l'on abandonne toute attente esthétique pour se concentrer uniquement sur le ressenti et le plaisir de faire.
                     </div>
                 </div>
 
                 <!-- Q2 -->
-                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-100">
-                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all reveal delay-100">
+                    <button id="faq-btn-2" class="faq-btn w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 rounded-lg cursor-pointer" aria-expanded="false" aria-controls="faq-answer-2">
                         <span class="font-serif font-bold text-fluid-h3 text-stone-900">Comment se déroulent les séances à domicile sur Cap Atlantique ?</span>
                         <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                     </button>
-                    <div class="faq-content text-stone-600 text-fluid-sm leading-relaxed">
+                    <div id="faq-answer-2" class="faq-content text-stone-600 text-fluid-sm leading-relaxed" role="region" aria-labelledby="faq-btn-2">
                         Je viens directement chez vous avec tout le matériel nécessaire (protections de table, argile, peintures sans odeur, pastels, papiers). Une simple table dans un endroit calme et lumineux suffit pour créer une bulle de soin intime et chaleureuse.
                     </div>
                 </div>
 
                 <!-- Q3 -->
-                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-200">
-                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all reveal delay-200">
+                    <button id="faq-btn-3" class="faq-btn w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 rounded-lg cursor-pointer" aria-expanded="false" aria-controls="faq-answer-3">
                         <span class="font-serif font-bold text-fluid-h3 text-stone-900">Combien de séances sont nécessaires ?</span>
                         <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                     </button>
-                    <div class="faq-content text-stone-600 text-fluid-sm leading-relaxed">
+                    <div id="faq-answer-3" class="faq-content text-stone-600 text-fluid-sm leading-relaxed" role="region" aria-labelledby="faq-btn-3">
                         Il n'y a aucun engagement de durée. Un accompagnement peut être ponctuel (quelques séances pour surmonter une période difficile) ou s'inscrire dans la régularité (un suivi hebdomadaire ou bimensuel pour le maintien de l'autonomie et de la mémoire d'un senior). Nous faisons un point régulier sur vos ressentis.
                     </div>
                 </div>
 
                 <!-- Q4 -->
-                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-300">
-                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all reveal delay-300">
+                    <button id="faq-btn-4" class="faq-btn w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 rounded-lg cursor-pointer" aria-expanded="false" aria-controls="faq-answer-4">
                         <span class="font-serif font-bold text-fluid-h3 text-stone-900">Quelle différence avec une psychothérapie verbale classique ?</span>
                         <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                     </button>
-                    <div class="faq-content text-stone-600 text-fluid-sm leading-relaxed">
+                    <div id="faq-answer-4" class="faq-content text-stone-600 text-fluid-sm leading-relaxed" role="region" aria-labelledby="faq-btn-4">
                         En psychothérapie classique, la parole est le seul vecteur d'échange, ce qui peut être intimidant ou bloquant lorsque les traumatismes, la fatigue ou la maladie empêchent de s'exprimer. L'art-thérapie offre un support concret intermédiaire : l'émotion passe d'abord par la main et la matière avant d'être mise en mots, en toute sécurité.
                     </div>
                 </div>
 
                 <!-- Q5 -->
-                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all cursor-pointer reveal delay-400">
-                    <button class="w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false">
+                <div class="faq-item bg-warm-50 rounded-2xl border border-warm-200 p-5 transition-all reveal delay-400">
+                    <button id="faq-btn-5" class="faq-btn w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 rounded-lg cursor-pointer" aria-expanded="false" aria-controls="faq-answer-5">
                         <span class="font-serif font-bold text-fluid-h3 text-stone-900">En quoi consiste l'appel découverte offert de 15 minutes ?</span>
                         <div class="faq-icon w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center shrink-0 ml-4 transition-transform duration-300 shadow-2xs border border-warm-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                     </button>
-                    <div class="faq-content text-stone-600 text-fluid-sm leading-relaxed">
+                    <div id="faq-answer-5" class="faq-content text-stone-600 text-fluid-sm leading-relaxed" role="region" aria-labelledby="faq-btn-5">
                         Cet échange téléphonique gratuit et sans aucun engagement vous permet de m'exposer votre situation, vos questions ou celles concernant un proche. C'est l'occasion de vérifier si mon approche correspond exactement à votre attente.
                     </div>
                 </div>
@@ -1242,13 +1096,38 @@
                             <textarea id="form-message" rows="3" placeholder="Indiquez votre commune et votre besoin pour préparer au mieux notre échange..." class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-fluid-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
                         </div>
 
-                        <button type="submit" id="form-submit-btn" class="w-full py-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl font-bold text-fluid-sm transition shadow-md flex items-center justify-center gap-2">
+                        <!-- Honeypot Anti-Spam Web3Forms -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <button type="submit" id="form-submit-btn" class="w-full py-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl font-bold text-fluid-sm transition shadow-md flex items-center justify-center gap-2 cursor-pointer">
                             <span>Demander mon appel découverte gratuit</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                         </button>
 
-                        <div id="form-feedback" class="hidden p-3 rounded-xl bg-teal-50 border border-teal-200 text-teal-800 text-xs text-center font-medium">
-                            Merci ! Votre message a bien été pris en compte. Je vous recontacte sous 24h.
+                        <!-- Message de Succès -->
+                        <div id="form-feedback" class="hidden p-4 rounded-2xl bg-teal-50 border border-teal-200 text-teal-900 text-xs text-center font-medium">
+                            <div class="text-sm font-bold text-teal-800 mb-1 flex items-center justify-center gap-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Demande transmise avec succès</span>
+                            </div>
+                            Merci pour votre message ! Je vous recontacte personnellement sous 24h ouvrées.
+                        </div>
+
+                        <!-- Message d'Erreur avec Fallback Téléphone/Email direct -->
+                        <div id="form-feedback-error" class="hidden p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 text-xs text-center">
+                            <div class="font-bold mb-1" id="form-error-title">Une erreur est survenue lors de l'envoi</div>
+                            <p class="mb-2 text-stone-600" id="form-error-desc">Veuillez réessayer ou me joindre directement :</p>
+                            <div class="flex flex-wrap items-center justify-center gap-3 font-semibold text-teal-800">
+                                <a href="tel:0677156910" class="hover:underline flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    06 77 15 69 10
+                                </a>
+                                <span>•</span>
+                                <a href="mailto:alice@maurage.fr" class="hover:underline flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                    alice@maurage.fr
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -1275,9 +1154,10 @@
 
                 <!-- Middle Links -->
                 <div class="flex flex-wrap justify-center gap-6 text-fluid-xs text-stone-400">
+                    <a href="./index.html" class="hover:text-white transition">Accueil</a>
+                    <a href="./la-baule-pornichet.html" class="hover:text-teal-300 text-stone-300 font-medium transition">La Baule & Pornichet</a>
+                    <a href="./ehpad-institutions.html" class="hover:text-teal-300 text-stone-300 font-medium transition">EHPAD & Structures</a>
                     <a href="#approche" class="hover:text-white transition">L'Approche</a>
-                    <a href="#pourqui" class="hover:text-white transition">Pour qui</a>
-                    <a href="#mediums" class="hover:text-white transition">Médiums</a>
                     <a href="#tarifs" class="hover:text-white transition">Tarifs</a>
                     <a href="#faq" class="hover:text-white transition">FAQ</a>
                     <button id="open-mentions-btn" class="hover:text-teal-300 underline underline-offset-4 decoration-stone-600 transition">Mentions Légales</button>
@@ -1519,53 +1399,107 @@
         }
 
         // =========================================================================
-        // 4. FAQ ACCORDION
+        // 4. FAQ ACCORDION (ACCESSIBLE & CONFORME WCAG)
         // =========================================================================
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const isOpen = item.classList.contains('open');
-                
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('open');
-                        const btn = otherItem.querySelector('button');
-                        if (btn) btn.setAttribute('aria-expanded', 'false');
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+                // Fermeture des autres questions
+                faqButtons.forEach(otherBtn => {
+                    if (otherBtn !== btn) {
+                        const otherItem = otherBtn.closest('.faq-item');
+                        if (otherItem) otherItem.classList.remove('open');
+                        otherBtn.setAttribute('aria-expanded', 'false');
                     }
                 });
 
-                if (isOpen) {
+                // Bascule de la question cliquée
+                if (isExpanded) {
                     item.classList.remove('open');
-                    const btn = item.querySelector('button');
-                    if (btn) btn.setAttribute('aria-expanded', 'false');
+                    btn.setAttribute('aria-expanded', 'false');
                 } else {
                     item.classList.add('open');
-                    const btn = item.querySelector('button');
-                    if (btn) btn.setAttribute('aria-expanded', 'true');
+                    btn.setAttribute('aria-expanded', 'true');
                 }
             });
         });
 
         // =========================================================================
-        // 5. MENTIONS LÉGALES MODAL
+        // 5. MENTIONS LÉGALES MODAL (AVEC FOCUS TRAP & RESTAURATION WCAG)
         // =========================================================================
         const mentionsModal = document.getElementById('mentions-modal');
         const openMentionsBtn = document.getElementById('open-mentions-btn');
         const closeMentionsBtn = document.getElementById('close-mentions-btn');
         const mentionsModalContent = document.getElementById('mentions-modal-content');
+        let previouslyFocusedElement = null;
+
+        function getModalFocusableElements() {
+            if (!mentionsModalContent) return [];
+            return Array.from(
+                mentionsModalContent.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                )
+            ).filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+        }
+
+        function handleModalKeydown(e) {
+            if (mentionsModal.classList.contains('hidden')) return;
+
+            // Touche Échap
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                closeModal();
+                return;
+            }
+
+            // Focus trap (Touche Tab)
+            if (e.key === 'Tab') {
+                const focusable = getModalFocusableElements();
+                if (focusable.length === 0) return;
+
+                const firstElement = focusable[0];
+                const lastElement = focusable[focusable.length - 1];
+
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement || !mentionsModalContent.contains(document.activeElement)) {
+                        e.preventDefault();
+                        lastElement.focus();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        e.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
+        }
 
         function openModal() {
             if (!mentionsModal) return;
+            previouslyFocusedElement = document.activeElement;
+
             mentionsModal.classList.remove('hidden');
-            void mentionsModal.offsetWidth;
+            void mentionsModal.offsetWidth; // Force reflow
             mentionsModal.classList.remove('opacity-0');
             mentionsModalContent.classList.remove('scale-95');
             mentionsModalContent.classList.add('scale-100');
             document.body.style.overflow = 'hidden';
+
+            // Déplacer le focus à l'intérieur de la modale sur le bouton de fermeture
+            setTimeout(() => {
+                if (closeMentionsBtn) closeMentionsBtn.focus();
+            }, 100);
+
+            document.addEventListener('keydown', handleModalKeydown);
         }
 
         function closeModal() {
             if (!mentionsModal) return;
+            document.removeEventListener('keydown', handleModalKeydown);
+
             mentionsModal.classList.add('opacity-0');
             mentionsModalContent.classList.remove('scale-100');
             mentionsModalContent.classList.add('scale-95');
@@ -1573,6 +1507,10 @@
             setTimeout(() => {
                 mentionsModal.classList.add('hidden');
                 document.body.style.overflow = '';
+                // Restauration du focus sur le bouton déclencheur
+                if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+                    previouslyFocusedElement.focus();
+                }
             }, 300);
         }
 
@@ -1583,30 +1521,43 @@
                 if (e.target === mentionsModal) closeModal();
             });
         }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mentionsModal && !mentionsModal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
 
         // =========================================================================
-        // 6. CONTACT FORM
+        // 6. CONTACT FORM (WEB3FORMS - ENVOI 100% SANS SERVEUR)
         // =========================================================================
-        function handleFormSubmit(event) {
+        // Clé Web3Forms pour alice@maurage.fr
+        const WEB3FORMS_ACCESS_KEY = "7dbc9d3a-1130-4878-a406-0712162dd61e";
+
+        async function handleFormSubmit(event) {
             event.preventDefault();
+            const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('form-submit-btn');
             const feedback = document.getElementById('form-feedback');
-            const name = document.getElementById('form-name').value;
-            const phone = document.getElementById('form-phone').value;
-            const email = document.getElementById('form-email').value;
+            const feedbackError = document.getElementById('form-feedback-error');
+            const formErrorTitle = document.getElementById('form-error-title');
+            const formErrorDesc = document.getElementById('form-error-desc');
+
+            const name = document.getElementById('form-name').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const email = document.getElementById('form-email').value.trim();
             const subject = document.getElementById('form-subject').value;
-            const message = document.getElementById('form-message').value;
+            const message = document.getElementById('form-message').value.trim();
 
-            // Visual feedback
+            // Masquer les alertes précédentes
+            feedback.classList.add('hidden');
+            feedbackError.classList.add('hidden');
+
+            // État visuel de chargement avec spinner
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<span>Envoi en cours...</span>`;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Envoi en cours...</span>
+            `;
 
-            // PostHog Event Capture
+            // Tracking PostHog de tentative
             if (window.posthog) {
                 posthog.capture('contact_form_submitted', {
                     subject: subject,
@@ -1615,15 +1566,73 @@
                 });
             }
 
-            setTimeout(() => {
-                submitBtn.classList.add('hidden');
-                feedback.classList.remove('hidden');
+            // Vérification si la clé est renseignée
+            if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'VOTRE_CLE_WEB3FORMS_ICI') {
+                console.warn("[Web3Forms] Clé d'accès non configurée. Veuillez remplacer WEB3FORMS_ACCESS_KEY par votre clé.");
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `
+                        <span>Demander mon appel découverte gratuit</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    `;
+                    formErrorTitle.textContent = "Clé d'envoi en attente de configuration";
+                    formErrorDesc.innerHTML = "Le formulaire est prêt côté code ! Il suffit de renseigner la clé d'accès Web3Forms (variable <code>WEB3FORMS_ACCESS_KEY</code>). En attendant, vous pouvez joindre directement Alice :";
+                    feedbackError.classList.remove('hidden');
+                }, 600);
+                return;
+            }
 
-                // Mailto fallback
-                const mailtoUrl = `mailto:alice@maurage.fr?subject=${encodeURIComponent('Demande RDV (Cap Atlantique) - ' + subject + ' - ' + name)}&body=${encodeURIComponent('Nom: ' + name + '\nTéléphone: ' + phone + '\nEmail: ' + email + '\nSujet: ' + subject + '\n\nMessage:\n' + message)}`;
-                
-                window.location.href = mailtoUrl;
-            }, 800);
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        subject: `Demande RDV (Cap Atlantique) - ${name} - ${subject}`,
+                        from_name: name,
+                        name: name,
+                        telephone: phone,
+                        email: email || 'Non renseigné',
+                        profil_recherche: subject,
+                        message: message || 'Aucun message spécifique',
+                        source_site: 'maurage.fr'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.status === 200 && result.success) {
+                    submitBtn.classList.add('hidden');
+                    feedback.classList.remove('hidden');
+                    form.reset();
+
+                    if (window.posthog) {
+                        posthog.capture('contact_form_success', {
+                            subject: subject,
+                            has_email: Boolean(email)
+                        });
+                    }
+                } else {
+                    throw new Error(result.message || "Erreur lors de la transmission");
+                }
+            } catch (err) {
+                console.error("[Web3Forms Error]", err);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `
+                    <span>Demander mon appel découverte gratuit</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                `;
+                formErrorTitle.textContent = "Une erreur est survenue lors de l'envoi";
+                formErrorDesc.innerHTML = "La transmission n'a pas pu aboutir. Veuillez réessayer ou contacter Alice directement par téléphone ou email :";
+                feedbackError.classList.remove('hidden');
+
+                if (window.posthog) {
+                    posthog.capture('contact_form_failed', { error: String(err) });
+                }
+            }
         }
 
         // PostHog Phone Click Tracking

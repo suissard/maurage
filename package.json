@@ -1,0 +1,24 @@
+{
+  "name": "maurage",
+  "version": "1.0.0",
+  "description": "Site art thérapie",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/style.css --minify",
+    "watch:css": "tailwindcss -i ./css/input.css -o ./css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suissard/maurage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suissard/maurage/issues"
+  },
+  "homepage": "https://github.com/suissard/maurage#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

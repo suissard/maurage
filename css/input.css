@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scroll, Viewport Adjustments & Fluid Base */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-size: clamp(1rem, 0.95rem + 0.22vw, 1.0625rem);
+    line-height: 1.65;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Delay Utilities */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Artistic Brush Underline Container */
+.art-underline {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* FAQ Accordion Transitions */
+.faq-content {
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, padding 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+.faq-item.open .faq-content {
+    max-height: 400px;
+    opacity: 1;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+}
+.faq-item.open .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Floating animation for badge */
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+.animate-float {
+    animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Background Pattern */
+.pattern-dots {
+    background-image: radial-gradient(rgba(15, 118, 110, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
