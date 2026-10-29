@@ -1,8 +1,8 @@
 {
   "name": "maurage",
   "version": "1.0.0",
-  "description": "Site art thérapie",
-  "main": "index.js",
+  "description": "Site vitrine & réservation en ligne — Alice Maurage, Art-Thérapeute Clinique certifiée RNCP (Cap Atlantique & Presqu'île de Guérande)",
+  "main": "js/main.js",
   "scripts": {
     "build:css": "tailwindcss -i ./css/input.css -o ./css/style.css --minify",
     "watch:css": "tailwindcss -i ./css/input.css -o ./css/style.css --watch"

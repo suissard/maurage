@@ -2,7 +2,8 @@
 module.exports = {
   content: [
     "./*.html",
-    "./**/*.html"
+    "./**/*.html",
+    "./js/**/*.js"
   ],
   theme: {
     screens: {
@@ -25,6 +26,10 @@ module.exports = {
         'fluid-body': 'clamp(0.975rem, 0.92rem + 0.25vw, 1.0625rem)',
         'fluid-sm': 'clamp(0.85rem, 0.8rem + 0.2vw, 0.925rem)',
         'fluid-xs': 'clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem)',
+        '2xs': ['0.6875rem', { lineHeight: '1rem' }],
+      },
+      scale: {
+        '102': '1.02',
       },
       colors: {
         sage: {
@@ -82,6 +87,8 @@ module.exports = {
         }
       },
       boxShadow: {
+        '2xs': '0 1px 2px 0 rgba(28, 25, 23, 0.04)',
+        'xs': '0 1px 3px 0 rgba(28, 25, 23, 0.06), 0 1px 2px -1px rgba(28, 25, 23, 0.04)',
         'soft': '0 10px 30px -5px rgba(15, 118, 110, 0.07)',
         'card': '0 4px 20px -2px rgba(44, 58, 49, 0.05)',
         'hover': '0 20px 35px -5px rgba(15, 118, 110, 0.12)',

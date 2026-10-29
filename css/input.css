@@ -14,13 +14,14 @@ body {
     line-height: 1.65;
 }
 
-.reveal {
+/* Progressive Enhancement: Only hide .reveal elements when JS is active */
+html.js-enabled .reveal {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
-.reveal.active {
+html.js-enabled .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
@@ -31,11 +32,16 @@ body {
 .delay-300 { transition-delay: 300ms; }
 .delay-400 { transition-delay: 400ms; }
 
-/* Artistic Brush Underline Container */
+/* Artistic Brush Underline Container (Responsive safe on mobile viewports) */
 .art-underline {
     position: relative;
     display: inline-block;
-    white-space: nowrap;
+    z-index: 1;
+}
+@media (min-width: 640px) {
+    .art-underline {
+        white-space: nowrap;
+    }
 }
 
 /* FAQ Accordion Transitions */
@@ -46,7 +52,7 @@ body {
     opacity: 0;
 }
 .faq-item.open .faq-content {
-    max-height: 400px;
+    max-height: 450px;
     opacity: 1;
     padding-top: 0.75rem;
     padding-bottom: 0.5rem;
@@ -68,4 +74,25 @@ body {
 .pattern-dots {
     background-image: radial-gradient(rgba(15, 118, 110, 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
+}
+
+/* Accessibility: Respect user preference for reduced motion (WCAG 2.1 AA - 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    html.js-enabled .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        will-change: auto;
+    }
+    .animate-float,
+    .animate-pulse,
+    .animate-ping {
+        animation: none !important;
+    }
+    .faq-content {
+        transition: none !important;
+    }
 }
